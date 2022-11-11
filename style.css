@@ -31,7 +31,7 @@ header nav a {
     color: var(--color);
     letter-spacing: 1px;
     font-size: 1.5rem;
-    transition: color 0.5s ease, filter 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out, filter 0.5s ease-in-out;
     filter: drop-shadow(0 0 0 var(--color));
 }
 
@@ -58,14 +58,17 @@ header nav a:nth-child(4) {
 }
 
 /*main*/
+/*Type name container*/
 #presentation {
     display: flex;
     height: 800px;
     align-items: center;
+    justify-content: space-around;
 }
 
 #name-writer {
     margin-left: 5rem;
+    width: 40%;
 }
 
 #name-writer p {
@@ -80,6 +83,104 @@ header nav a:nth-child(4) {
     width: fit-content;
     border-right: 0.45rem solid rgb(10, 240, 240);
     animation: 0.5s step-end infinite alternate blink;
+}
+
+/*Skill jumping container*/
+#skills-container {
+    width: 40%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#letter-container {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-box {
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgb(238, 133, 14);
+    filter: saturate(200%);
+    -webkit-text-stroke: 2px rgb(255, 230, 0);
+    filter: drop-shadow(2px -2px 2px rgb(255, 230, 0));
+    letter-spacing: 0.2rem;
+    animation: 2s ease-in-out infinite alternate jump;
+    animation-delay: calc(0.4s * var(--d));
+    transform: translateY(1rem);
+}
+
+/*Icon circle container*/
+#icon-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-origin: center;
+    animation: 12s linear infinite move;
+}
+
+.box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    transform-origin: center;
+    border-radius: 50%;
+    font-size: 2rem;
+    animation: 12s linear infinite reverse move;
+}
+
+.box i::before {
+    color: rgb(6, 226, 226);
+    filter: saturate(200%);
+    animation: 5s ease-in-out infinite alternate color-wave;
+    animation-delay: calc(0.3s * var(--i));
+}
+
+@keyframes move {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes color-wave{
+    0% {
+        color: rgb(6, 226, 226);
+    }
+
+    25% {
+        color: rgb(6, 247, 46);
+    }
+
+    50% {
+        color: rgb(167, 41, 37);
+    }
+
+    75% {
+        color: rgb(231, 21, 168);
+    }
+
+    100% {
+        color: rgb(20, 52, 235);
+    }
+}
+
+@keyframes jump {
+    to {
+        transform: translateY(-1rem);
+    }
 }
 
 @keyframes blink {
