@@ -94,13 +94,13 @@ header nav a:nth-child(4) {
     border-radius: 50%;
     border: 2px solid var(--borderc);
     background-color: var(--body-background);
-    cursor: pointer;
     overflow: hidden;
     transition: border-color 0.5s ease;
 }
 
 .mode {
     width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,6 +108,7 @@ header nav a:nth-child(4) {
 
 #light-icon {
     position: relative;
+    cursor: pointer;
     height: 40px;
     width: 100px;
     background-color: var(--light-mode-button-bc);
@@ -126,7 +127,7 @@ header nav a:nth-child(4) {
 /*Type name container*/
 #presentation {
     display: flex;
-    height: 800px;
+    min-height: 800px;
     align-items: center;
     justify-content: space-around;
 }
@@ -146,6 +147,7 @@ header nav a:nth-child(4) {
 #type-name {
     min-height: 2.5rem;
     width: fit-content;
+    white-space: nowrap;
     border-right: 0.45rem solid var(--underline-bc);
     animation: 0.5s step-end infinite alternate blink;
 }
@@ -186,6 +188,7 @@ header nav a:nth-child(4) {
     position: relative;
     width: 300px;
     height: 300px;
+    border-radius: 50%;
     transform-origin: center;
     animation: 12s linear infinite move;
 }
@@ -251,5 +254,76 @@ header nav a:nth-child(4) {
 @keyframes blink {
     50% {
         border-color: transparent;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    #presentation {
+        flex-direction: column;
+    }
+
+    #name-writer {
+        width: 90%;
+        margin: 0;
+    }
+
+    #name-writer p {
+        font-size: 1.5rem;
+    }
+
+    #skills-container {
+        width: 90%;
+    }
+
+    #type-name {
+        min-height: 2rem;
+        border-width: 0.3rem;
+    }
+
+    .letter-box {
+        font-size: 3rem;
+        letter-spacing: 0.15rem;
+    }
+    
+}
+
+@media only screen and (max-width: 420px) {
+    header nav {
+        display: none;
+    }
+
+    #name-writer p {
+        font-size: 1rem;
+    }
+
+    #skills-container {
+        width: 100%;
+        height: 390px;
+    }
+
+    #type-name {
+        min-height: 1.5rem;
+    }
+
+    #icon-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width:360px) {
+    #skills-container {
+        height: 360px;
+    }
+    
+    #icon-container {
+        width: 210px;
+        height: 210px;
     }
 }

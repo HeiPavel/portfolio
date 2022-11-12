@@ -43,13 +43,18 @@ const round = (number, numberOfDigits) => {
 }
 
 Array.prototype.forEach.call(boxs, box => {
-    const radius = 100;
+    const iconContainer = document.getElementById('icon-container');
+    let iconContainerRadiusString = window.getComputedStyle(iconContainer).width;
+    iconContainerRadiusString = iconContainerRadiusString.substring(0, iconContainerRadiusString.indexOf('px'));
+    const iconContainerRadius = Number(iconContainerRadiusString)/2;
+    const radius = iconContainerRadius/1.5;
     let boxRadiusString = window.getComputedStyle(box).width;
     boxRadiusString = boxRadiusString.substring(0, boxRadiusString.indexOf('px'));
     const boxRadius = Number(boxRadiusString)/2;
+    console.log(iconContainerRadius, boxRadius);
     const radians = round((alpha * 0.0174533), 4);
-    let x = round((150 - boxRadius), 4);
-    let y = round((150 - boxRadius), 4);
+    let x = round((iconContainerRadius - boxRadius), 4);
+    let y = round((iconContainerRadius - boxRadius), 4);
     let dx = round((radius * Math.cos(radians)), 4);
     let dy = round(((radius * Math.sin(radians) * -1)), 4);
     const left = Math.round(x + dx);
