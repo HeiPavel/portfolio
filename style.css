@@ -1,7 +1,24 @@
 :root {
     font-size: 18px;
-    --body-background: black;
+    --body-background: rgb(0, 0, 0);
     --color: rgb(238, 224, 206);
+    --borderc: var(--color);
+    --nav-hover-color: rgb(235, 212, 5);
+    --underline-bc: rgb(10, 240, 240);
+    --light-mode-icon-color: rgb(243, 113, 7);
+    --light-mode-button-bc: rgb(1,4,19);
+    --jumping-letter-color: rgb(238, 133, 14);
+    --jumping-letter-stroke-color: rgb(255, 230, 0);
+}
+
+.root-light-mode {
+    --body-background: rgb(252, 253, 253);
+    --color: rgb(0, 0, 0);
+    --light-mode-button-bc: rgb(143, 231, 227);
+    --nav-hover-color: rgb(29, 25, 231);
+    --underline-bc: rgb(211, 45, 183);
+    --jumping-letter-color: rgb(90, 22, 129);
+    --jumping-letter-stroke-color: rgb(207, 70, 219);
 }
 
 html, body, p {
@@ -11,6 +28,7 @@ html, body, p {
 body {
     background-color: var(--body-background);
     font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /*Header*/
@@ -36,8 +54,8 @@ header nav a {
 }
 
 header nav a:hover {
-    color:rgb(235, 212, 5);
-    filter: drop-shadow(2px 2px 10px rgb(235, 212, 5));
+    color: var(--nav-hover-color);
+    filter: drop-shadow(2px 2px 10px var(--nav-hover-color));
 }
 
 header nav a:nth-child(1) {
@@ -52,12 +70,59 @@ header nav a:nth-child(4) {
     width: 100%;
     height: 3px;
     position: absolute;
-    background-color: rgb(10, 240, 240);
+    background-color: var(--underline-bc);
     left: 0;
     transition: left 0.5s ease, width 0.5s ease;
 }
 
 /*main*/
+/*Light mode button*/
+#light-mode-container {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 5px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#light-mode-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--borderc);
+    background-color: var(--body-background);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.5s ease;
+}
+
+.mode {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#light-icon {
+    position: relative;
+    height: 40px;
+    width: 100px;
+    background-color: var(--light-mode-button-bc);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--light-mode-icon-color);
+    transform: translateX(0);
+    transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+#light-mode-button .light-mode {
+    transform: translateX(-60px);
+}
+
 /*Type name container*/
 #presentation {
     display: flex;
@@ -81,7 +146,7 @@ header nav a:nth-child(4) {
 #type-name {
     min-height: 2.5rem;
     width: fit-content;
-    border-right: 0.45rem solid rgb(10, 240, 240);
+    border-right: 0.45rem solid var(--underline-bc);
     animation: 0.5s step-end infinite alternate blink;
 }
 
@@ -106,10 +171,10 @@ header nav a:nth-child(4) {
 .letter-box {
     font-size: 4rem;
     font-weight: bold;
-    color: rgb(238, 133, 14);
+    color: var(--jumping-letter-color);
     filter: saturate(200%);
-    -webkit-text-stroke: 2px rgb(255, 230, 0);
-    filter: drop-shadow(2px -2px 2px rgb(255, 230, 0));
+    -webkit-text-stroke: 2px var(--jumping-letter-stroke-color);
+    filter: drop-shadow(2px -2px 2px var(--jumping-letter-stroke-color));
     letter-spacing: 0.2rem;
     animation: 2s ease-in-out infinite alternate jump;
     animation-delay: calc(0.4s * var(--d));

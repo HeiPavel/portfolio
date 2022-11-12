@@ -2,8 +2,10 @@ const underline = document.getElementById('underline');
 const links = document.querySelectorAll('header a');
 const paragNameTyping = document.getElementById('type-name');
 const boxs = document.getElementsByClassName('box');
+const iconBar = document.getElementById('light-icon');
+const lightModeButton = document.getElementById('light-mode-button');
 
-
+// Nav bar underline effect
 for (const link of links) {
     link.addEventListener('click', event => {
         underline.style.left = `${event.target.offsetLeft}px`;
@@ -11,6 +13,7 @@ for (const link of links) {
     });
 };
 
+//Type name effect
 const string = 'Pavel Trofymovych';
 const typeName = async (string) => {
     for (let i = 0; i < string.length; i++) {
@@ -32,6 +35,7 @@ const typeName = async (string) => {
     typeName(string);
 };
 
+//Skill circle effect
 let alpha = 0;
 
 const round = (number, numberOfDigits) => {
@@ -54,5 +58,18 @@ Array.prototype.forEach.call(boxs, box => {
     box.style.top = `${top}px`;
     alpha += 60;
 });
+
+//Light mode button
+const changeLightMode = () => {
+    if (iconBar.getAttribute('class') === null) {
+        iconBar.setAttribute('class', 'light-mode');
+        document.documentElement.setAttribute('class', 'root-light-mode');
+    } else {
+        iconBar.removeAttribute('class');
+        document.documentElement.removeAttribute('class');
+    }
+};
+
+lightModeButton.addEventListener('click', changeLightMode);
 
 window.addEventListener('load', typeName(string));
