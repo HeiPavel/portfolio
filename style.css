@@ -9,6 +9,11 @@
     --light-mode-button-bc: rgb(1,4,19);
     --jumping-letter-color: rgb(238, 133, 14);
     --jumping-letter-stroke-color: rgb(255, 230, 0);
+    /*Mobile menu colors*/
+    --mobile-menu-bc: rgba(0, 0, 0, 0.2);
+    --mobile-menu-shadow-c: rgba(255, 255, 255, 0.1);
+    --mobile-menu-border-hide-c: rgba(0, 0, 0, 0);
+    --mobile-menu-border-show-c: rgba(0, 0, 0, 0.2);
 }
 
 .root-light-mode {
@@ -19,6 +24,11 @@
     --underline-bc: rgb(211, 45, 183);
     --jumping-letter-color: rgb(90, 22, 129);
     --jumping-letter-stroke-color: rgb(207, 70, 219);
+    /*Mobile menu colors*/
+    --mobile-menu-bc: rgba(255, 255, 255, 0.2);
+    --mobile-menu-shadow-c: rgba(0, 0, 0, 0.1);
+    --mobile-menu-border-hide-c: rgba(255, 255, 255, 0);
+    --mobile-menu-border-show-c: rgba(255, 255, 255, 0.2);
 }
 
 html, body, p {
@@ -34,16 +44,18 @@ body {
 /*Header*/
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
 }
 
-header nav {
+header .desktop {
     position: relative;
     margin-right: 5rem;;
     padding: 15px 0;
 }
 
-header nav a {
+header .desktop a {
     margin: 0 2rem;
     text-decoration: none;
     color: var(--color);
@@ -53,16 +65,16 @@ header nav a {
     filter: drop-shadow(2px 2px 10px transparent);
 }
 
-header nav a:hover {
+header .desktop a:hover {
     color: var(--nav-hover-color);
     filter: drop-shadow(2px 2px 10px var(--nav-hover-color));
 }
 
-header nav a:nth-child(1) {
+header .desktop a:nth-child(1) {
     margin-left: 0;
 }
 
-header nav a:nth-child(4) {
+header .desktop a:nth-child(4) {
     margin-right: 0;
 }
 
@@ -75,13 +87,99 @@ header nav a:nth-child(4) {
     transition: left 0.5s ease, width 0.5s ease;
 }
 
+/*Mobile nav menu*/
+#mobile-menu-container {
+    display: none;
+    position: relative;
+    right: 1rem;
+}
+
+#menu-button {
+    height: 40px;
+    width: 40px;
+    position: relative;
+}
+
+.menu-button-line {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    /*background-color: rgba(0, 0, 0, 1);*/
+    background-color: var(--color);
+    border-radius: 3px;
+    transform-origin: center;
+    transition: transform 0.5s;
+}
+
+#top {
+    top: 10%;
+}
+
+#menu-button .rotate-top {
+    transform: translateY(350%) rotate(45deg);
+}
+
+#middle {
+    top: 45%;
+}
+
+#menu-button .hide-middle {
+    transform: scaleX(0);
+}
+
+#bottom {
+    bottom: 10%;
+}
+
+#menu-button .rotate-bottom {
+    transform: translateY(-350%) rotate(-45deg);
+}
+
+#mobile-menu {
+    width: 200px;
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    overflow: hidden;
+    background: var(--mobile-menu-bc);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--mobile-menu-shadow-c);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--mobile-menu-border-hide-c);
+    transform-origin: top right;
+    transform: scaleX(0) scaleY(0);
+    transition: transform 0.5s ease, border-color 0.5s;
+}
+
+#mobile-menu-container .show-mobile-menu {
+    transform: scaleX(100%) scaleY(100%);
+    border: 1px solid var(--mobile-menu-border-show-c);
+}
+
+#mobile-menu a {
+    display: block;
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 1rem 0;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color);
+    transform: translateX(100%);
+}
+
+#mobile-menu .mobile-menu-links {
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+    transition-delay: calc(0.4s + 0.2s * var(--delay));
+}
+
 /*main*/
 /*Light mode button*/
 #light-mode-container {
     width: 50px;
     height: 50px;
     position: relative;
-    top: 5px;
     left: 30px;
     display: flex;
     justify-content: center;
@@ -258,6 +356,14 @@ header nav a:nth-child(4) {
 }
 
 @media only screen and (max-width: 960px) {
+    .desktop {
+        display: none;
+    }
+
+    #mobile-menu-container {
+        display: block;
+    }
+
     #presentation {
         flex-direction: column;
     }
@@ -288,9 +394,6 @@ header nav a:nth-child(4) {
 }
 
 @media only screen and (max-width: 420px) {
-    header nav {
-        display: none;
-    }
 
     #name-writer p {
         font-size: 1rem;

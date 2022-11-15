@@ -12,15 +12,6 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Galery</a>
-            <a href="#">Media</a>
-            <a href="#">Contact</a>
-            <div id="underline"></div>
-        </nav>
-    </header>
-    <main>
         <div id="light-mode-container">
             <div id="light-mode-button">
                 <div id="light-icon">
@@ -33,6 +24,28 @@
                 </div>
             </div>
         </div>
+        <nav class="desktop">
+            <a href="#">Home</a>
+            <a href="#">Galery</a>
+            <a href="#">Media</a>
+            <a href="#">Contact</a>
+            <div id="underline"></div>
+        </nav>
+        <div id="mobile-menu-container">
+            <div id="menu-button">
+                <div id="top" class="menu-button-line"></div>
+                <div id="middle" class="menu-button-line"></div>
+                <div id="bottom" class="menu-button-line"></div>
+            </div>
+            <nav id="mobile-menu">
+                <a style="--delay:1" href="#">Home</a>
+                <a style="--delay:2" href="#">Galery</a>
+                <a style="--delay:3" href="#">Media</a>
+                <a style="--delay:4" href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
         <section id="presentation">
             <div id="name-writer">
                 <p id="type-name"></p>

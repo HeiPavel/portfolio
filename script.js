@@ -1,9 +1,10 @@
 const underline = document.getElementById('underline');
-const links = document.querySelectorAll('header a');
+const links = document.querySelectorAll('.desktop a');
 const paragNameTyping = document.getElementById('type-name');
 const boxs = document.getElementsByClassName('box');
 const iconBar = document.getElementById('light-icon');
 const lightModeButton = document.getElementById('light-mode-button');
+const menuButton = document.getElementById('menu-button');
 
 // Nav bar underline effect
 for (const link of links) {
@@ -11,6 +12,32 @@ for (const link of links) {
         underline.style.left = `${event.target.offsetLeft}px`;
         underline.style.width = `${event.target.offsetWidth}px`;
     });
+};
+
+//Mobile nav menu
+const rotateLine = () => {
+    const topLine = document.getElementById('top');
+    const middleLine = document.getElementById('middle');
+    const bottomLine = document.getElementById('bottom');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+    if (topLine.className.includes('rotate-top') && bottomLine.className.includes('rotate-bottom') && middleLine.className.includes('hide-middle')) {
+        topLine.className = 'menu-button-line';
+        middleLine.className = 'menu-button-line';
+        bottomLine.className = 'menu-button-line';
+        mobileMenu.removeAttribute('class');
+        for (const link of mobileMenuLinks) {
+            link.removeAttribute('class');
+        }
+    } else {
+        topLine.className = 'menu-button-line rotate-top';
+        middleLine.className = 'menu-button-line hide-middle';
+        bottomLine.className = 'menu-button-line rotate-bottom';
+        mobileMenu.setAttribute('class', 'show-mobile-menu');
+        for (const link of mobileMenuLinks) {
+            link.setAttribute('class', 'mobile-menu-links');
+        }
+    }
 };
 
 //Type name effect
@@ -77,6 +104,8 @@ const changeLightMode = () => {
 };
 
 lightModeButton.addEventListener('click', changeLightMode);
+
+menuButton.addEventListener('click', rotateLine);
 
 window.addEventListener('load', typeName);
 
