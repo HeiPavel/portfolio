@@ -49,7 +49,7 @@ header nav a {
     color: var(--color);
     letter-spacing: 1px;
     font-size: 1.5rem;
-    transition: color 0.5s ease-in-out, filter 0.5s ease-in-out;
+    transition: color 0.5s ease, filter 0.5s ease;
     filter: drop-shadow(0 0 0 var(--color));
 }
 
@@ -198,8 +198,8 @@ header nav a:nth-child(4) {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 70px;
     transform-origin: center;
     border-radius: 50%;
     font-size: 2rem;
@@ -311,8 +311,8 @@ header nav a:nth-child(4) {
     }
 
     .box {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         font-size: 1.5rem;
     }
 }

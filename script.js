@@ -14,8 +14,8 @@ for (const link of links) {
 };
 
 //Type name effect
-const string = 'Pavel Trofymovych';
-const typeName = async (string) => {
+const typeName = async () => {
+    const string = 'Pavel Trofymovych';
     for (let i = 0; i < string.length; i++) {
         let addLetter;
         const prom = new Promise(resolve => {
@@ -32,16 +32,17 @@ const typeName = async (string) => {
             paragNameTyping.textContent = '';
         }, 3000);
     });
-    typeName(string);
+    typeName();
 };
 
 //Skill circle effect
-let alpha = 0;
 
 const round = (number, numberOfDigits) => {
     return Number(number.toFixed(numberOfDigits));
-}
+};
+
 const placeIconOnCircle = () => {
+    let alpha = 0;
     Array.prototype.forEach.call(boxs, box => {
         const iconContainer = document.getElementById('icon-container');
         let iconContainerRadiusString = window.getComputedStyle(iconContainer).width;
@@ -51,7 +52,6 @@ const placeIconOnCircle = () => {
         let boxRadiusString = window.getComputedStyle(box).width;
         boxRadiusString = boxRadiusString.substring(0, boxRadiusString.indexOf('px'));
         const boxRadius = Number(boxRadiusString)/2;
-        console.log(iconContainerRadius, boxRadius);
         const radians = round((alpha * 0.0174533), 4);
         let x = round((iconContainerRadius - boxRadius), 4);
         let y = round((iconContainerRadius - boxRadius), 4);
@@ -78,7 +78,7 @@ const changeLightMode = () => {
 
 lightModeButton.addEventListener('click', changeLightMode);
 
-window.addEventListener('load', typeName(string));
+window.addEventListener('load', typeName);
 
 'resize load'.split(' ').forEach(element => {
     window.addEventListener(element, placeIconOnCircle);
