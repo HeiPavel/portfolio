@@ -1,16 +1,20 @@
-const underline = document.getElementById('underline');
 const links = document.querySelectorAll('.desktop a');
 const paragNameTyping = document.getElementById('type-name');
 const boxs = document.getElementsByClassName('box');
 const iconBar = document.getElementById('light-icon');
 const lightModeButton = document.getElementById('light-mode-button');
 const menuButton = document.getElementById('menu-button');
+const sectionHeaderBoxs = document.getElementsByClassName('content-container-box');
 
 // Nav bar underline effect
 for (const link of links) {
     link.addEventListener('click', event => {
-        underline.style.left = `${event.target.offsetLeft}px`;
-        underline.style.width = `${event.target.offsetWidth}px`;
+        for (const element of event.target.parentNode.children) {
+            if (element.matches('.underline')) {
+                element.style.left = `${event.target.offsetLeft}px`;
+                element.style.width = `${event.target.offsetWidth}px`;
+            }
+        }
     });
 };
 
@@ -103,6 +107,14 @@ const changeLightMode = () => {
     }
 };
 
+//Underline placement and width for section headers
+const sectionPlaceHeadersUnderline = () => {
+    for (const box of sectionHeaderBoxs) {
+        box.lastElementChild.style.left = `${box.firstElementChild.offsetLeft}px`;
+        box.lastElementChild.style.width = `${box.firstElementChild.offsetWidth}px`;
+    }
+}
+
 lightModeButton.addEventListener('click', changeLightMode);
 
 menuButton.addEventListener('click', rotateLine);
@@ -111,4 +123,5 @@ window.addEventListener('load', typeName);
 
 'resize load'.split(' ').forEach(element => {
     window.addEventListener(element, placeIconOnCircle);
+    window.addEventListener(element, sectionPlaceHeadersUnderline);
 });  

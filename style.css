@@ -31,12 +31,13 @@
     --mobile-menu-border-show-c: rgba(255, 255, 255, 0.2);
 }
 
-html, body, p {
+html, body, p, h1 {
     margin: 0;
 }
 
 body {
     background-color: var(--body-background);
+    color: var(--color);
     font-family: 'Orbitron', sans-serif;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -78,12 +79,15 @@ header .desktop a:nth-child(4) {
     margin-right: 0;
 }
 
-#underline {
+.underline {
     width: 100%;
     height: 3px;
     position: absolute;
     background-color: var(--underline-bc);
     left: 0;
+}
+
+header .desktop .underline {
     transition: left 0.5s ease, width 0.5s ease;
 }
 
@@ -309,6 +313,24 @@ header .desktop a:nth-child(4) {
     filter: saturate(200%);
     animation: 5s ease-in-out infinite alternate color-wave;
     animation-delay: calc(0.3s * var(--i));
+}
+
+/*Section about*/
+.content-container {
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 10% 0;
+}
+
+.content-container-box {
+    position: relative;
+}
+
+.content-container-box h1{
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    width: fit-content;
 }
 
 @keyframes move {
