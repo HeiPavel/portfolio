@@ -110,8 +110,24 @@ const changeLightMode = () => {
 //Underline placement and width for section headers
 const sectionPlaceHeadersUnderline = () => {
     for (const box of sectionHeaderBoxs) {
+        const step = (box.firstElementChild.offsetLeft + box.firstElementChild.offsetWidth + 5);
+        box.lastElementChild.style = `--length:${-1 * step}px;`;
+        box.firstElementChild.style = `--length-right:${step}px;`;
         box.lastElementChild.style.left = `${box.firstElementChild.offsetLeft}px`;
         box.lastElementChild.style.width = `${box.firstElementChild.offsetWidth}px`;
+    }
+};
+
+const checkSectionPosition = () => {
+    for (const box of sectionHeaderBoxs) {
+        let topPosition = box.getBoundingClientRect().top;
+        if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.2)) {
+            box.firstElementChild.className = 'content-container-header center-content-container-header';
+            box.lastElementChild.className = 'underline center-underline';
+        } else {
+            box.firstElementChild.className = 'content-container-header';
+            box.lastElementChild.className = 'underline';
+        }
     }
 }
 
@@ -125,3 +141,5 @@ window.addEventListener('load', typeName);
     window.addEventListener(element, placeIconOnCircle);
     window.addEventListener(element, sectionPlaceHeadersUnderline);
 });  
+
+window.addEventListener('scroll', checkSectionPosition);

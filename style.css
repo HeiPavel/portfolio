@@ -35,6 +35,10 @@ html, body, p, h1 {
     margin: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--body-background);
     color: var(--color);
@@ -323,7 +327,9 @@ header .desktop .underline {
 }
 
 .content-container-box {
+    padding: 15px 0;
     position: relative;
+    overflow: hidden;
 }
 
 .content-container-box h1{
@@ -331,6 +337,25 @@ header .desktop .underline {
     letter-spacing: 2px;
     margin: 0 auto;
     width: fit-content;
+}
+
+.content-container-box .underline {
+    transform: translateX(var(--length));
+    transition: transform 1s ease;
+}
+
+.content-container .content-container-box .center-underline {
+    transform: translateX(0);
+}
+
+.content-container-box .content-container-header {
+    position: relative;
+    transform: translateX(var(--length-right));
+    transition: transform 1s ease;
+}
+
+.content-container .content-container-box .center-content-container-header {
+    transform: translateX(0);
 }
 
 @keyframes move {
