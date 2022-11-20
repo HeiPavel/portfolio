@@ -9,12 +9,9 @@ const sectionHeaderBoxs = document.getElementsByClassName('content-container-box
 // Nav bar underline effect
 for (const link of links) {
     link.addEventListener('click', event => {
-        for (const element of event.target.parentNode.children) {
-            if (element.matches('.underline')) {
-                element.style.left = `${event.target.offsetLeft}px`;
-                element.style.width = `${event.target.offsetWidth}px`;
-            }
-        }
+        const underline = event.target.parentElement.querySelector('.underline');
+        underline.style.left = `${event.target.offsetLeft}px`;
+        underline.style.width = `${event.target.offsetWidth}px`;
     });
 };
 
@@ -110,11 +107,11 @@ const changeLightMode = () => {
 //Underline placement and width for section headers
 const sectionPlaceHeadersUnderline = () => {
     for (const box of sectionHeaderBoxs) {
-        const step = (box.firstElementChild.offsetLeft + box.firstElementChild.offsetWidth + 5);
-        box.lastElementChild.style = `--length:${-1 * step}px;`;
-        box.firstElementChild.style = `--length-right:${step}px;`;
-        box.lastElementChild.style.left = `${box.firstElementChild.offsetLeft}px`;
-        box.lastElementChild.style.width = `${box.firstElementChild.offsetWidth}px`;
+        const step = (box.querySelector('.content-container-header').offsetLeft + box.querySelector('.content-container-header').offsetWidth + 5);
+        box.querySelector('.underline').style = `--length:${-1 * step}px;`;
+        box.querySelector('.content-container-header').style = `--length:${step}px;`;
+        box.querySelector('.underline').style.left = `${box.querySelector('.content-container-header').offsetLeft}px`;
+        box.querySelector('.underline').style.width = `${box.querySelector('.content-container-header').offsetWidth}px`;
     }
 };
 
@@ -122,14 +119,14 @@ const checkSectionPosition = () => {
     for (const box of sectionHeaderBoxs) {
         let topPosition = box.getBoundingClientRect().top;
         if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.2)) {
-            box.firstElementChild.className = 'content-container-header center-content-container-header';
-            box.lastElementChild.className = 'underline center-underline';
+            box.querySelector('.content-container-header').className = 'content-container-header center-content-container-header';
+            box.querySelector('.underline').className = 'underline center-underline';
         } else {
-            box.firstElementChild.className = 'content-container-header';
-            box.lastElementChild.className = 'underline';
+            box.querySelector('.content-container-header').className = 'content-container-header';
+            box.querySelector('.underline').className = 'underline';
         }
     }
-}
+};
 
 lightModeButton.addEventListener('click', changeLightMode);
 

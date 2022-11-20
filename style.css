@@ -1,10 +1,12 @@
 :root {
     font-size: 18px;
     --body-background: rgb(0, 0, 0);
-    --color: rgb(238, 224, 206);
+    --color: rgba(238, 224, 206, 1);
+    --color-transparent: rgba(238, 224, 206, 0);
     --borderc: var(--color);
     --nav-hover-color: rgb(235, 212, 5);
-    --underline-bc: rgb(10, 240, 240);
+    --underline-bc: rgba(10, 240, 240, 1);
+    --underline-transparent-bc: rgba(10, 240, 240, 0);
     --light-mode-icon-color: rgb(243, 113, 7);
     --light-mode-button-bc: rgb(1,4,19);
     --jumping-letter-color: rgb(238, 133, 14);
@@ -18,10 +20,12 @@
 
 .root-light-mode {
     --body-background: rgb(252, 253, 253);
-    --color: rgb(0, 0, 0);
+    --color: rgba(0, 0, 0, 1);
+    --color-transparent: rgba(0, 0, 0, 0);
     --light-mode-button-bc: rgb(143, 231, 227);
     --nav-hover-color: rgb(29, 25, 231);
-    --underline-bc: rgb(211, 45, 183);
+    --underline-bc: rgba(211, 45, 183, 1);
+    --underline-transparent-bc: rgba(211, 45, 183, 0);
     --jumping-letter-color: rgb(90, 22, 129);
     --jumping-letter-stroke-color: rgb(207, 70, 219);
     /*Mobile menu colors*/
@@ -327,6 +331,8 @@ header .desktop .underline {
 }
 
 .content-container-box {
+    width: 98%;
+    margin: 0 auto;
     padding: 15px 0;
     position: relative;
     overflow: hidden;
@@ -340,21 +346,25 @@ header .desktop .underline {
 }
 
 .content-container-box .underline {
+    background-color: var(--underline-transparent-bc);
     transform: translateX(var(--length));
-    transition: transform 1s ease;
+    transition: transform 1s ease, background-color 0.5s 0.2s ease;
 }
 
 .content-container .content-container-box .center-underline {
+    background-color: var(--underline-bc);
     transform: translateX(0);
 }
 
 .content-container-box .content-container-header {
+    color: var(--color-transparent);
     position: relative;
-    transform: translateX(var(--length-right));
-    transition: transform 1s ease;
+    transform: translateX(var(--length));
+    transition: transform 1s ease, color 0.5s 0.2s ease;
 }
 
 .content-container .content-container-box .center-content-container-header {
+    color: var(--color);
     transform: translateX(0);
 }
 
