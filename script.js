@@ -115,7 +115,18 @@ const sectionPlaceHeadersUnderline = () => {
     }
 };
 
-const checkSectionPosition = () => {
+const startAnimation = (startElement, elementToChangeClass, animationClassName) => {
+    const topPosition = startElement.getBoundingClientRect().top;
+    const className = elementToChangeClass.className;
+    const baseClaseName = className.includes(animationClassName) ? className.slice(0, className.indexOf(' ')) : className;
+    if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.5)) {
+        elementToChangeClass.className += ` ${animationClassName}`
+    } else {
+        elementToChangeClass.className = `${baseClaseName}`;
+    }
+};
+
+/*const checkSectionPosition = () => {
     for (const box of sectionHeaderBoxs) {
         let topPosition = box.getBoundingClientRect().top;
         if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.2)) {
@@ -126,6 +137,21 @@ const checkSectionPosition = () => {
             box.querySelector('.underline').className = 'underline';
         }
     }
+    const text = document.querySelector('#about').querySelector('.text');
+    let topPositionText = text.getBoundingClientRect().top;
+        if (window.innerHeight - topPositionText >= Math.round(window.innerHeight * 0.2)) {
+            text.className = 'text text-animation';
+        } else {
+            text.className = 'text';
+        }
+};*/
+
+const checkSectionPosition = () => {
+    for (const box of sectionHeaderBoxs) {
+        startAnimation(document.querySelector('#about'), box.querySelector('.content-container-header'), 'center-content-container-header');
+        startAnimation(document.querySelector('#about'), box.querySelector('.underline'), 'center-underline');
+    }
+    startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation');
 };
 
 lightModeButton.addEventListener('click', changeLightMode);

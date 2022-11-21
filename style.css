@@ -116,7 +116,6 @@ header .desktop .underline {
     position: absolute;
     width: 100%;
     height: 10%;
-    /*background-color: rgba(0, 0, 0, 1);*/
     background-color: var(--color);
     border-radius: 3px;
     transform-origin: center;
@@ -327,7 +326,7 @@ header .desktop .underline {
 .content-container {
     height: 100vh;
     box-sizing: border-box;
-    padding: 10% 0;
+    padding: 5% 0;
 }
 
 .content-container-box {
@@ -366,6 +365,35 @@ header .desktop .underline {
 .content-container .content-container-box .center-content-container-header {
     color: var(--color);
     transform: translateX(0);
+}
+
+.text-container {
+    padding: 5% 20%;
+    position: relative;
+    overflow: hidden;
+}
+
+.text-container span {
+    white-space: pre;
+}
+
+.text-container p {
+    font-size: 1.1rem;
+    padding: 10px 0;
+    line-height: 1.5;
+    letter-spacing: 2px;
+}
+
+.text {
+    position: relative;
+    transform: translateX(150%) scale(0);
+    transition: transform 1s linear, opacity 1s ease;
+    opacity: 0;
+}
+
+.text-container .text-animation {
+    transform: translateX(0) scale(1);
+    opacity: 1;
 }
 
 @keyframes move {
@@ -475,6 +503,14 @@ header .desktop .underline {
         height: 55px;
         font-size: 1.5rem;
     }
+
+    .text-container {
+        padding: 5% 7%;
+    }
+
+    .text-container p {
+        font-size: 0.9rem;
+    }
 }
 
 @media only screen and (max-width:360px) {
@@ -485,5 +521,9 @@ header .desktop .underline {
     #icon-container {
         width: 210px;
         height: 210px;
+    }
+
+    .text-container {
+        padding: 5%;
     }
 }
