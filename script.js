@@ -4,7 +4,7 @@ const boxs = document.getElementsByClassName('box');
 const iconBar = document.getElementById('light-icon');
 const lightModeButton = document.getElementById('light-mode-button');
 const menuButton = document.getElementById('menu-button');
-const sectionHeaderBoxs = document.getElementsByClassName('content-container-box');
+const sectionHeaderBoxs = document.getElementsByClassName('content-container');
 
 // Nav bar underline effect
 for (const link of links) {
@@ -115,41 +115,26 @@ const sectionPlaceHeadersUnderline = () => {
     }
 };
 
+// Checking position to start animation at section elements
 const startAnimation = (startElement, elementToChangeClass, animationClassName) => {
     const topPosition = startElement.getBoundingClientRect().top;
     const className = elementToChangeClass.className;
     const baseClaseName = className.includes(animationClassName) ? className.slice(0, className.indexOf(' ')) : className;
     if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.5)) {
-        elementToChangeClass.className += ` ${animationClassName}`
+        if (!className.includes(animationClassName)) {
+            elementToChangeClass.className = `${baseClaseName} ${animationClassName}`;
+        }
     } else {
-        elementToChangeClass.className = `${baseClaseName}`;
+        if (className.includes(animationClassName)) {
+            elementToChangeClass.className = `${baseClaseName}`;
+        }
     }
 };
 
-/*const checkSectionPosition = () => {
-    for (const box of sectionHeaderBoxs) {
-        let topPosition = box.getBoundingClientRect().top;
-        if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.2)) {
-            box.querySelector('.content-container-header').className = 'content-container-header center-content-container-header';
-            box.querySelector('.underline').className = 'underline center-underline';
-        } else {
-            box.querySelector('.content-container-header').className = 'content-container-header';
-            box.querySelector('.underline').className = 'underline';
-        }
-    }
-    const text = document.querySelector('#about').querySelector('.text');
-    let topPositionText = text.getBoundingClientRect().top;
-        if (window.innerHeight - topPositionText >= Math.round(window.innerHeight * 0.2)) {
-            text.className = 'text text-animation';
-        } else {
-            text.className = 'text';
-        }
-};*/
-
 const checkSectionPosition = () => {
     for (const box of sectionHeaderBoxs) {
-        startAnimation(document.querySelector('#about'), box.querySelector('.content-container-header'), 'center-content-container-header');
-        startAnimation(document.querySelector('#about'), box.querySelector('.underline'), 'center-underline');
+        startAnimation(box, box.querySelector('.content-container-header'), 'center-content-container-header');
+        startAnimation(box, box.querySelector('.underline'), 'center-underline');
     }
     startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation');
 };

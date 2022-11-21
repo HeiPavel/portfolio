@@ -324,7 +324,6 @@ header .desktop .underline {
 
 /*Section about*/
 .content-container {
-    height: 100vh;
     box-sizing: border-box;
     padding: 5% 0;
 }
