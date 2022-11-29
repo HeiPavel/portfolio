@@ -5,7 +5,7 @@ const iconBar = document.getElementById('light-icon');
 const lightModeButton = document.getElementById('light-mode-button');
 const menuButton = document.getElementById('menu-button');
 const sectionHeaderBoxs = document.getElementsByClassName('content-container');
-const projectContainer = document.getElementsByClassName('project-container');
+const projectContainer = document.getElementsByClassName('project-content-box');
 
 // Nav bar underline effect
 for (const link of links) {
@@ -138,12 +138,15 @@ const checkSectionPosition = () => {
         startAnimation(box, box.querySelector('.underline'), 'center-underline', 0.5);
     }
     startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation', 0.5);
-    startAnimation(document.querySelector('#projects'), projectContainer[0], 'project-animation', 0.5);
+    /*startAnimation(document.querySelector('#projects'), projectContainer[0], 'project-animation', 0.5);
     Array.prototype.forEach.call(projectContainer, (project, index) => {
         if (index > 0) {
             startAnimation(project, project, 'project-animation', 0.3);
         }
-    });
+    });*/
+    for (const project of projectContainer) {
+        startAnimation(project, project.querySelector('.project-container'), 'project-animation', 0.5);
+    }
 };
 
 lightModeButton.addEventListener('click', changeLightMode);

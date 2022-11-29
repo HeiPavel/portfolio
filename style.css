@@ -339,7 +339,6 @@ header .desktop .underline {
     padding: 15px 0;
     position: relative;
     overflow: hidden;
-    z-index: 5;
 }
 
 .content-container-box h1{
@@ -420,7 +419,7 @@ header .desktop .underline {
     width: 60%;
     height: 550px;
     overflow: hidden;
-    box-shadow: 0 10px 30px var(--mobile-menu-border-show-c);
+    box-shadow: 0 10px 30px var(--mobile-menu-shadow-c);
     transform: translateX(150%) scale(0);
     transition: transform 1s ease, opacity 1s ease;
     opacity: 0;
@@ -482,7 +481,7 @@ header .desktop .underline {
 
 .project-image, .project-description {
     border-radius: 10px;
-    box-shadow: 0 5px 30px var(--mobile-menu-border-show-c);
+    box-shadow: 0 5px 30px var(--mobile-menu-shadow-c);
 }
 
 .project-image {
