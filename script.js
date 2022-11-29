@@ -1,4 +1,5 @@
 const links = document.querySelectorAll('.desktop a');
+const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
 const paragNameTyping = document.getElementById('type-name');
 const boxs = document.getElementsByClassName('box');
 const iconBar = document.getElementById('light-icon');
@@ -22,7 +23,7 @@ const rotateLine = () => {
     const middleLine = document.getElementById('middle');
     const bottomLine = document.getElementById('bottom');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+    /*const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');*/
     if (topLine.className.includes('rotate-top') && bottomLine.className.includes('rotate-bottom') && middleLine.className.includes('hide-middle')) {
         topLine.className = 'menu-button-line';
         middleLine.className = 'menu-button-line';
@@ -138,12 +139,6 @@ const checkSectionPosition = () => {
         startAnimation(box, box.querySelector('.underline'), 'center-underline', 0.5);
     }
     startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation', 0.5);
-    /*startAnimation(document.querySelector('#projects'), projectContainer[0], 'project-animation', 0.5);
-    Array.prototype.forEach.call(projectContainer, (project, index) => {
-        if (index > 0) {
-            startAnimation(project, project, 'project-animation', 0.3);
-        }
-    });*/
     for (const project of projectContainer) {
         startAnimation(project, project.querySelector('.project-container'), 'project-animation', 0.5);
     }
@@ -152,6 +147,10 @@ const checkSectionPosition = () => {
 lightModeButton.addEventListener('click', changeLightMode);
 
 menuButton.addEventListener('click', rotateLine);
+
+for (const link of mobileMenuLinks) {
+    link.addEventListener('click', rotateLine);
+}
 
 window.addEventListener('load', typeName);
 

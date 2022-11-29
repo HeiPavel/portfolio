@@ -58,6 +58,10 @@ img {
 /*Header*/
 header {
     display: flex;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--body-background);
     justify-content: space-between;
     align-items: center;
     height: 64px;
@@ -192,6 +196,10 @@ header .desktop .underline {
 
 /*main*/
 /*Light mode button*/
+main {
+    padding-top: 64px;
+}
+
 #light-mode-container {
     width: 50px;
     height: 50px;
@@ -330,7 +338,7 @@ header .desktop .underline {
 /*Section about*/
 .content-container {
     box-sizing: border-box;
-    padding: 5% 0;
+    padding-top: 10%;
 }
 
 .content-container-box {
@@ -403,7 +411,7 @@ header .desktop .underline {
 
 /*Section Projects*/
 .project-content-box {
-    padding: 50px 0 200px 0;
+    padding: 70px 0 200px 0;
     display: flex;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
@@ -420,13 +428,13 @@ header .desktop .underline {
     height: 550px;
     overflow: hidden;
     box-shadow: 0 10px 30px var(--mobile-menu-shadow-c);
-    transform: translateX(150%) scale(0);
+    transform: /*translateX(150%)*/ scale(0);
     transition: transform 1s ease, opacity 1s ease;
     opacity: 0;
 }
 
 .project-content-box .project-animation {
-    transform: translateX(0) scale(1);
+    transform: /*translateX(0)*/ scale(1);
     opacity: 1;
 }
 
@@ -632,7 +640,7 @@ header .desktop .underline {
     }
 
     .project-content-box {
-        padding-bottom: 100px;
+        padding: 30px 0 100px 0;
     }
 
     .project-container {
@@ -689,6 +697,10 @@ header .desktop .underline {
 
     .text-container {
         padding: 5% 7%;
+    }
+
+    .content-container {
+        padding: 20% 0;
     }
 
     .text-container p {
