@@ -50,6 +50,11 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+img {
+    width: auto;
+    height: auto;
+}
+
 /*Header*/
 header {
     display: flex;
@@ -334,6 +339,7 @@ header .desktop .underline {
     padding: 15px 0;
     position: relative;
     overflow: hidden;
+    z-index: 5;
 }
 
 .content-container-box h1{
@@ -370,6 +376,7 @@ header .desktop .underline {
     padding: 5% 20%;
     position: relative;
     overflow: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 
 .text-container span {
@@ -393,6 +400,140 @@ header .desktop .underline {
 .text-container .text-animation {
     transform: translateX(0) scale(1);
     opacity: 1;
+}
+
+/*Section Projects*/
+.project-content-box {
+    padding: 50px 0 200px 0;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 20px;
+    width: 60%;
+    height: 550px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--mobile-menu-border-show-c);
+    transform: translateX(150%) scale(0);
+    transition: transform 1s ease, opacity 1s ease;
+    opacity: 0;
+}
+
+.project-content-box .project-animation {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+.project-container::after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: conic-gradient(transparent, transparent, transparent, rgb(120, 245, 3));
+    filter: saturate(400%);
+    animation: 10s linear infinite rotate;
+    animation-delay: 5s;
+}
+
+.project-container::before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: conic-gradient(transparent, transparent, transparent, rgb(4, 243, 243));
+    filter: saturate(400%);
+    animation: 10s linear infinite rotate;
+}
+
+.project-box {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--body-background);
+    border-radius: 16px;
+    inset: 5px;
+    z-index: 5;
+}
+
+.project-header {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-header h1 {
+    font-size: 2.5rem;
+}
+
+.project-content {
+    height: 85%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.project-image, .project-description {
+    border-radius: 10px;
+    box-shadow: 0 5px 30px var(--mobile-menu-border-show-c);
+}
+
+.project-image {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.project-description {
+    width: 40%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.project-text {
+    padding: 0 5%;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.skills-made-by {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.project-skills {
+    height: 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+}
+
+.project-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.2rem;
+}
+
+.project-button {
+    padding: 5px 20px;
+    background-color: var(--underline-bc);
+    border-radius: 5px;
 }
 
 @keyframes move {
@@ -439,6 +580,22 @@ header .desktop .underline {
     }
 }
 
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .project-container {
+        width: 80%;
+    }
+}
+
 @media only screen and (max-width: 960px) {
     .desktop {
         display: none;
@@ -474,7 +631,35 @@ header .desktop .underline {
         font-size: 3rem;
         letter-spacing: 0.15rem;
     }
+
+    .project-content-box {
+        padding-bottom: 100px;
+    }
+
+    .project-container {
+        height: 850px;
+    }
+
+    .project-content {
+        height: 90%;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .project-header {
+        height: 10%;
+    }
+
+    .project-image {
+        width: 80%;
+        height: 40%;
+    }
     
+    .project-description {
+        width: 80%;
+        height: 53%;
+    }
 }
 
 @media only screen and (max-width: 420px) {
@@ -509,6 +694,23 @@ header .desktop .underline {
 
     .text-container p {
         font-size: 0.9rem;
+    }
+
+    .project-container {
+        width: 96%; 
+    }
+
+    .project-header h1 {
+        font-size: 2rem;
+    }
+
+    .project-image, .project-description {
+        width: 96%;
+    }
+
+    .project-skills {
+        width: 100%;
+        font-size: 1.1rem;
     }
 }
 

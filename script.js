@@ -5,6 +5,7 @@ const iconBar = document.getElementById('light-icon');
 const lightModeButton = document.getElementById('light-mode-button');
 const menuButton = document.getElementById('menu-button');
 const sectionHeaderBoxs = document.getElementsByClassName('content-container');
+const projectContainer = document.getElementsByClassName('project-container');
 
 // Nav bar underline effect
 for (const link of links) {
@@ -116,11 +117,11 @@ const sectionPlaceHeadersUnderline = () => {
 };
 
 // Checking position to start animation at section elements
-const startAnimation = (startElement, elementToChangeClass, animationClassName) => {
+const startAnimation = (startElement, elementToChangeClass, animationClassName, multiplyer) => {
     const topPosition = startElement.getBoundingClientRect().top;
     const className = elementToChangeClass.className;
     const baseClaseName = className.includes(animationClassName) ? className.slice(0, className.indexOf(' ')) : className;
-    if (window.innerHeight - topPosition >= Math.round(window.innerHeight * 0.5)) {
+    if (window.innerHeight - topPosition >= Math.round(window.innerHeight * multiplyer)) {
         if (!className.includes(animationClassName)) {
             elementToChangeClass.className = `${baseClaseName} ${animationClassName}`;
         }
@@ -133,10 +134,16 @@ const startAnimation = (startElement, elementToChangeClass, animationClassName) 
 
 const checkSectionPosition = () => {
     for (const box of sectionHeaderBoxs) {
-        startAnimation(box, box.querySelector('.content-container-header'), 'center-content-container-header');
-        startAnimation(box, box.querySelector('.underline'), 'center-underline');
+        startAnimation(box, box.querySelector('.content-container-header'), 'center-content-container-header', 0.5);
+        startAnimation(box, box.querySelector('.underline'), 'center-underline', 0.5);
     }
-    startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation');
+    startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation', 0.5);
+    startAnimation(document.querySelector('#projects'), projectContainer[0], 'project-animation', 0.5);
+    Array.prototype.forEach.call(projectContainer, (project, index) => {
+        if (index > 0) {
+            startAnimation(project, project, 'project-animation', 0.3);
+        }
+    });
 };
 
 lightModeButton.addEventListener('click', changeLightMode);
