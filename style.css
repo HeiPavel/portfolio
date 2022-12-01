@@ -16,6 +16,8 @@
     --mobile-menu-shadow-c: rgba(255, 255, 255, 0.1);
     --mobile-menu-border-hide-c: rgba(0, 0, 0, 0);
     --mobile-menu-border-show-c: rgba(0, 0, 0, 0.2);
+    --header-text-shadow-color-04: rgba(255, 255, 255, 0.4);
+    --header-text-shadow-color-02: rgba(255, 255, 255, 0.2);
 }
 
 .root-light-mode {
@@ -33,6 +35,8 @@
     --mobile-menu-shadow-c: rgba(0, 0, 0, 0.1);
     --mobile-menu-border-hide-c: rgba(255, 255, 255, 0);
     --mobile-menu-border-show-c: rgba(255, 255, 255, 0.2);
+    --header-text-shadow-color-04: rgba(16, 16, 16, 0.4);
+    --header-text-shadow-color-02: rgba(16, 16, 16, 0.2);
 }
 
 html, body, p, h1 {
@@ -51,7 +55,7 @@ body {
 }
 
 img {
-    width: auto;
+    width: 100%;
     height: auto;
 }
 
@@ -428,13 +432,13 @@ main {
     height: 550px;
     overflow: hidden;
     box-shadow: 0 10px 30px var(--mobile-menu-shadow-c);
-    transform: /*translateX(150%)*/ scale(0);
+    transform: scale(0);
     transition: transform 1s ease, opacity 1s ease;
     opacity: 0;
 }
 
 .project-content-box .project-animation {
-    transform: /*translateX(0)*/ scale(1);
+    transform: scale(1);
     opacity: 1;
 }
 
@@ -444,7 +448,7 @@ main {
     width: 300%;
     height: 300%;
     background: conic-gradient(transparent, transparent, transparent, rgb(120, 245, 3));
-    filter: saturate(400%);
+    filter: saturate(400%) blur(10px);
     animation: 10s linear infinite rotate;
     animation-delay: 5s;
 }
@@ -455,7 +459,7 @@ main {
     width: 300%;
     height: 300%;
     background: conic-gradient(transparent, transparent, transparent, rgb(4, 243, 243));
-    filter: saturate(400%);
+    filter: saturate(400%) blur(10px);
     animation: 10s linear infinite rotate;
 }
 
@@ -478,13 +482,25 @@ main {
 
 .project-header h1 {
     font-size: 2.5rem;
+    color: var(--jumping-letter-stroke-color);
+    font-weight: 700;
+    text-shadow: 1px 1px 1px var(--jumping-letter-color),
+    1px 2px 1px var(--jumping-letter-color),
+    1px 3px 1px var(--jumping-letter-color),
+    1px 4px 1px var(--jumping-letter-color),
+    1px 5px 1px var(--jumping-letter-color),
+    1px 7px 3px var(--header-text-shadow-color-04),
+    1px 9px 3px var(--header-text-shadow-color-02),
+    1px 11px 3px var(--header-text-shadow-color-02),
+    1px 13px 3px var(--header-text-shadow-color-04);
 }
 
 .project-content {
     height: 85%;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .project-image, .project-description {
@@ -494,7 +510,6 @@ main {
 
 .project-image {
     width: 50%;
-    height: 90%;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -524,8 +539,9 @@ main {
     height: 2rem;
     font-size: 1.2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
     width: 90%;
 }
 
@@ -534,14 +550,29 @@ main {
     display: flex;
     justify-content: center;
     gap: 20px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .project-button {
-    padding: 5px 20px;
-    background-color: var(--underline-bc);
-    border-radius: 5px;
+    position: relative;
+    background: transparent;
+    width: 5.5rem;
+    height: 2rem;
+    border-radius: 8px;
+    border: 3px solid var(--color);
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 0 0 var(--color);
+    transition: box-shadow 0.5s ease, background-color 0.5s ease ;
 }
+
+.project-button a {
+    text-decoration: none;
+    color: var(--color);
+    transition: color 0.5s ease-in-out;
+}
+
+/*Hover selectors for project-button writen in to @media (pointer: fine) only for screens with mouse etc...*/
 
 @keyframes move {
     from {
@@ -601,6 +632,24 @@ main {
     .project-container {
         width: 80%;
     }
+
+    .project-image {
+        width: 45%;
+    }
+
+    .project-description {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .project-image {
+        width: 40%;
+    }
+
+    .project-description {
+        width: 50%;
+    }
 }
 
 @media only screen and (max-width: 960px) {
@@ -650,8 +699,8 @@ main {
     .project-content {
         height: 90%;
         flex-direction: column;
-        justify-content: flex-start;
-        gap: 20px;
+        justify-content: space-around;
+        align-items: center;
     }
 
     .project-header {
@@ -660,12 +709,11 @@ main {
 
     .project-image {
         width: 80%;
-        height: 40%;
     }
     
     .project-description {
         width: 80%;
-        height: 53%;
+        height: 50%;
     }
 }
 
@@ -715,13 +763,18 @@ main {
         font-size: 2rem;
     }
 
-    .project-image, .project-description {
+    .project-image {
         width: 96%;
     }
 
+    .project-description {
+        width: 96%;
+        height: 60%;
+    }
+
     .project-skills {
-        width: 100%;
         font-size: 1.1rem;
+        gap: 15px;
     }
 }
 
@@ -737,5 +790,17 @@ main {
 
     .text-container {
         padding: 5%;
+    }
+}
+
+@media only screen and (pointer: fine) {
+    .project-button:hover {
+        box-shadow: 0 0 15px var(--color),
+        inset 5.5rem 0 var(--color);
+        background-color: var(--color);
+    }
+    
+    .project-button:hover a {
+        color: var(--body-background);
     }
 }
