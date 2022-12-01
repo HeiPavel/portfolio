@@ -447,7 +447,7 @@ main {
     position: absolute;
     width: 300%;
     height: 300%;
-    background: conic-gradient(transparent, transparent, transparent, rgb(120, 245, 3));
+    background: conic-gradient(transparent, transparent, transparent, var(--nav-hover-color));
     filter: saturate(400%) blur(10px);
     animation: 10s linear infinite rotate;
     animation-delay: 5s;
@@ -458,7 +458,7 @@ main {
     position: absolute;
     width: 300%;
     height: 300%;
-    background: conic-gradient(transparent, transparent, transparent, rgb(4, 243, 243));
+    background: conic-gradient(transparent, transparent, transparent, var(--underline-bc));
     filter: saturate(400%) blur(10px);
     animation: 10s linear infinite rotate;
 }
@@ -505,7 +505,7 @@ main {
 
 .project-image, .project-description {
     border-radius: 10px;
-    box-shadow: 0 5px 30px var(--mobile-menu-shadow-c);
+    box-shadow: 0 10px 20px var(--header-text-shadow-color-02);
 }
 
 .project-image {
@@ -551,6 +551,7 @@ main {
     justify-content: center;
     gap: 20px;
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .project-button {
@@ -770,6 +771,10 @@ main {
     .project-description {
         width: 96%;
         height: 60%;
+    }
+
+    .project-text {
+        font-size: 1.1rem;
     }
 
     .project-skills {
