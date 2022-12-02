@@ -19,7 +19,7 @@ const setUnderline = (event) => {
         underline.style.width = `${event.target.offsetWidth}px`;
         Promise.all(underline.getAnimations().map(animation => animation.finished)).then(() => checkLinkClick = false);
     }
-    if (event.type === 'scroll' && !checkLinkClick) {
+    if ((event.type === 'scroll' || event.type === 'resize') && !checkLinkClick && window.innerWidth >= 960) {
         const underlineOnScroll = document.querySelector('header').querySelector('.desktop').querySelector('.underline');
         for (const container of sectionHeaderBoxs) {
             const top = container.getBoundingClientRect().top;
@@ -49,7 +49,6 @@ const rotateLine = () => {
     const middleLine = document.getElementById('middle-line');
     const bottomLine = document.getElementById('bottom-line');
     const mobileMenu = document.getElementById('mobile-menu');
-    /*const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');*/
     if (topLine.className.includes('rotate-top') && bottomLine.className.includes('rotate-bottom') && middleLine.className.includes('hide-middle')) {
         topLine.className = 'menu-button-line';
         middleLine.className = 'menu-button-line';
@@ -177,6 +176,7 @@ for (const link of links) {
 };
 
 window.addEventListener('scroll', setUnderline);
+window.addEventListener('resize', setUnderline);
 
 menuButton.addEventListener('click', rotateLine);
 
