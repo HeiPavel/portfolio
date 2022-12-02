@@ -7,21 +7,47 @@ const lightModeButton = document.getElementById('light-mode-button');
 const menuButton = document.getElementById('menu-button');
 const sectionHeaderBoxs = document.getElementsByClassName('content-container');
 const projectContainer = document.getElementsByClassName('project-content-box');
+let check = false;
+let checkLinkClick = false;
 
 // Nav bar underline effect
-for (const link of links) {
-    link.addEventListener('click', event => {
+const setUnderline = (event) => {
+    if (event.type === 'click') {
+        checkLinkClick = true;
         const underline = event.target.parentElement.querySelector('.underline');
         underline.style.left = `${event.target.offsetLeft}px`;
         underline.style.width = `${event.target.offsetWidth}px`;
-    });
+        Promise.all(underline.getAnimations().map(animation => animation.finished)).then(() => checkLinkClick = false);
+    }
+    if (event.type === 'scroll' && !checkLinkClick) {
+        const underlineOnScroll = document.querySelector('header').querySelector('.desktop').querySelector('.underline');
+        for (const container of sectionHeaderBoxs) {
+            const top = container.getBoundingClientRect().top;
+            if (window.innerHeight - top >= Math.round(window.innerHeight * 0.5)) {
+                const id = container.getAttribute('id');
+                if (id === 'about' || 'projects' || 'contact') {
+                    check = true;
+                }
+                    const linkOnScroll = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-${id}`);
+                    underlineOnScroll.style.left = `${linkOnScroll.offsetLeft}px`;
+                    underlineOnScroll.style.width = `${linkOnScroll.offsetWidth}px`; 
+            }
+        }
+        const bodyTop = document.body.getBoundingClientRect().top * -1;
+        if (bodyTop <= (sectionHeaderBoxs[0].getBoundingClientRect().top) && check) {
+            const linkOnScrollHome = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-home`);
+            underlineOnScroll.style.left = `${linkOnScrollHome.offsetLeft}px`;
+            underlineOnScroll.style.width = `${linkOnScrollHome.offsetWidth}px`;
+            check= false;
+        }
+    }
 };
 
 //Mobile nav menu
 const rotateLine = () => {
-    const topLine = document.getElementById('top');
-    const middleLine = document.getElementById('middle');
-    const bottomLine = document.getElementById('bottom');
+    const topLine = document.getElementById('top-line');
+    const middleLine = document.getElementById('middle-line');
+    const bottomLine = document.getElementById('bottom-line');
     const mobileMenu = document.getElementById('mobile-menu');
     /*const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');*/
     if (topLine.className.includes('rotate-top') && bottomLine.className.includes('rotate-bottom') && middleLine.className.includes('hide-middle')) {
@@ -145,6 +171,12 @@ const checkSectionPosition = () => {
 };
 
 lightModeButton.addEventListener('click', changeLightMode);
+
+for (const link of links) {
+    link.addEventListener('click', setUnderline);
+};
+
+window.addEventListener('scroll', setUnderline);
 
 menuButton.addEventListener('click', rotateLine);
 

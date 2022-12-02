@@ -135,7 +135,7 @@ header .desktop .underline {
     transition: transform 0.5s;
 }
 
-#top {
+#top-line {
     top: 10%;
 }
 
@@ -143,7 +143,7 @@ header .desktop .underline {
     transform: translateY(350%) rotate(45deg);
 }
 
-#middle {
+#middle-line {
     top: 45%;
 }
 
@@ -151,7 +151,7 @@ header .desktop .underline {
     transform: scaleX(0);
 }
 
-#bottom {
+#bottom-line {
     bottom: 10%;
 }
 
