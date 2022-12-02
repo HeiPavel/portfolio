@@ -442,25 +442,31 @@ main {
     opacity: 1;
 }
 
-.project-container::after {
-    content: '';
+.project-rotate {
     position: absolute;
     width: 300%;
     height: 300%;
-    background: conic-gradient(transparent, transparent, transparent, var(--nav-hover-color));
-    filter: saturate(400%) blur(10px);
-    animation: 10s linear infinite rotate;
-    animation-delay: 5s;
 }
 
-.project-container::before {
-    content: '';
-    position: absolute;
-    width: 300%;
-    height: 300%;
+.bar-one {
+    background: conic-gradient(transparent, transparent, transparent, var(--nav-hover-color));
+    filter: saturate(400%) blur(10px);
+    /*animation: 10s linear infinite rotate-one;*/
+}
+
+.animate-one {
+    animation: 10s linear infinite rotate-one;
+}
+
+.bar-two {
     background: conic-gradient(transparent, transparent, transparent, var(--underline-bc));
     filter: saturate(400%) blur(10px);
-    animation: 10s linear infinite rotate;
+    transform: rotate(-180deg);
+    /*animation: 10s linear infinite rotate-two;*/
+}
+
+.animate-two {
+    animation: 10s linear infinite rotate-two;
 }
 
 .project-box {
@@ -619,13 +625,23 @@ main {
     }
 }
 
-@keyframes rotate {
+@keyframes rotate-one {
     from {
         transform: rotate(0);
     }
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-two {
+    from {
+        transform: rotate(-180deg);
+    }
+
+    to {
+        transform: rotate(180deg);
     }
 }
 

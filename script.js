@@ -169,6 +169,19 @@ const checkSectionPosition = () => {
     }
 };
 
+//Remove animation from project container for mobile
+const removeAnimation = () => {
+    for (const bar of projectContainer) {
+        if (window.innerWidth >= 960) {
+            bar.querySelector('.bar-one').className = 'project-rotate bar-one animate-one';
+            bar.querySelector('.bar-two').className = 'project-rotate bar-two animate-two';
+        } else {
+            bar.querySelector('.bar-one').className = 'project-rotate bar-one';
+            bar.querySelector('.bar-two').className = 'project-rotate bar-two';
+        }
+    }
+};
+
 lightModeButton.addEventListener('click', changeLightMode);
 
 for (const link of links) {
@@ -189,6 +202,7 @@ window.addEventListener('load', typeName);
 'resize load'.split(' ').forEach(element => {
     window.addEventListener(element, placeIconOnCircle);
     window.addEventListener(element, sectionPlaceHeadersUnderline);
+    window.addEventListener(element, removeAnimation);
 });  
 
 window.addEventListener('scroll', checkSectionPosition);
