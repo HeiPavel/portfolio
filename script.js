@@ -11,12 +11,16 @@ let check = false;
 let checkLinkClick = false;
 
 // Nav bar underline effect
+const setOffset = (underlineElement, elementToGetOffset) => {
+    underlineElement.style.left = `${elementToGetOffset.offsetLeft}px`;
+    underlineElement.style.width = `${elementToGetOffset.offsetWidth}px`;
+};
+
 const setUnderline = (event) => {
     const underline = document.querySelector('header').querySelector('.desktop').querySelector('.underline');
     if (event.type === 'click') {
         checkLinkClick = true;
-        underline.style.left = `${event.target.offsetLeft}px`;
-        underline.style.width = `${event.target.offsetWidth}px`;
+        setOffset(underline, event.target);
         Promise.all(underline.getAnimations().map(animation => animation.finished)).then(() => checkLinkClick = false);
     }
     if ((event.type === 'scroll' || event.type === 'resize') && !checkLinkClick && window.innerWidth >= 960) {
@@ -28,15 +32,13 @@ const setUnderline = (event) => {
                     check = true;
                 }
                     const linkOnScroll = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-${id}`);
-                    underline.style.left = `${linkOnScroll.offsetLeft}px`;
-                    underline.style.width = `${linkOnScroll.offsetWidth}px`; 
+                    setOffset(underline, linkOnScroll);
             }
         }
         const bodyTop = document.body.getBoundingClientRect().top * -1;
         if (bodyTop <= (sectionHeaderBoxs[0].getBoundingClientRect().top) && check) {
             const linkOnScrollHome = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-home`);
-            underline.style.left = `${linkOnScrollHome.offsetLeft}px`;
-            underline.style.width = `${linkOnScrollHome.offsetWidth}px`;
+            setOffset(underline, linkOnScrollHome);
             check= false;
         }
     }
