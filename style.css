@@ -11,13 +11,34 @@
     --light-mode-button-bc: rgb(1,4,19);
     --jumping-letter-color: rgb(238, 133, 14);
     --jumping-letter-stroke-color: rgb(255, 230, 0);
+    --header-text-shadow-color-04: rgba(255, 255, 255, 0.4);
+    --header-text-shadow-color-02: rgba(255, 255, 255, 0.2);
     /*Mobile menu colors*/
     --mobile-menu-bc: rgba(0, 0, 0, 0.2);
     --mobile-menu-shadow-c: rgba(255, 255, 255, 0.1);
     --mobile-menu-border-hide-c: rgba(0, 0, 0, 0);
     --mobile-menu-border-show-c: rgba(0, 0, 0, 0.2);
-    --header-text-shadow-color-04: rgba(255, 255, 255, 0.4);
-    --header-text-shadow-color-02: rgba(255, 255, 255, 0.2);
+    /*Colors for color-wave animation of icons*/
+    --icon-color-1: rgb(6, 226, 226);
+    --icon-color-2: rgb(6, 247, 46);
+    --icon-color-3: rgb(167, 41, 37);
+    --icon-color-4: rgb(231, 21, 168);
+    --icon-color-5: rgb(20, 52, 235);
+    --icon-color-1-alpha01: rgba(6, 226, 226, 0.1);
+    --icon-color-2-alpha01: rgba(6, 247, 46, 0.1);
+    --icon-color-3-alpha01: rgba(167, 41, 37, 0.1);
+    --icon-color-4-alpha01: rgba(231, 21, 168, 0.1);
+    --icon-color-5-alpha01: rgba(20, 52, 235, 0.1);
+    --icon-color-1-alpha02: rgba(6, 226, 226, 0.2);
+    --icon-color-2-alpha02: rgba(6, 247, 46, 0.2);
+    --icon-color-3-alpha02: rgba(167, 41, 37, 0.2);
+    --icon-color-4-alpha02: rgba(231, 21, 168, 0.2);
+    --icon-color-5-alpha02: rgba(20, 52, 235, 0.2);
+    --icon-color-1-alpha03: rgba(6, 226, 226, 0.3);
+    --icon-color-2-alpha03: rgba(6, 247, 46, 0.3);
+    --icon-color-3-alpha03: rgba(167, 41, 37, 0.3);
+    --icon-color-4-alpha03: rgba(231, 21, 168, 0.3);
+    --icon-color-5-alpha03: rgba(20, 52, 235, 0.3);
 }
 
 .root-light-mode {
@@ -30,13 +51,34 @@
     --underline-transparent-bc: rgba(211, 45, 183, 0);
     --jumping-letter-color: rgb(90, 22, 129);
     --jumping-letter-stroke-color: rgb(207, 70, 219);
+    --header-text-shadow-color-04: rgba(16, 16, 16, 0.4);
+    --header-text-shadow-color-02: rgba(16, 16, 16, 0.2);
     /*Mobile menu colors*/
     --mobile-menu-bc: rgba(255, 255, 255, 0.2);
     --mobile-menu-shadow-c: rgba(0, 0, 0, 0.1);
     --mobile-menu-border-hide-c: rgba(255, 255, 255, 0);
     --mobile-menu-border-show-c: rgba(255, 255, 255, 0.2);
-    --header-text-shadow-color-04: rgba(16, 16, 16, 0.4);
-    --header-text-shadow-color-02: rgba(16, 16, 16, 0.2);
+    /*Colors for color-wave animation of icons*/
+    --icon-color-1: rgb(90, 22, 129);
+    --icon-color-2: rgb(2, 1, 39);
+    --icon-color-3: rgb(6, 16, 102);
+    --icon-color-4: rgb(54, 16, 85);
+    --icon-color-5: rgb(85, 9, 56);
+    --icon-color-1-alpha01: rgba(90, 22, 129, 0.1);
+    --icon-color-2-alpha01: rgba(2, 1, 39, 0.1);
+    --icon-color-3-alpha01: rgba(6, 16, 102, 0.1);
+    --icon-color-4-alpha01: rgba(54, 16, 85, 0.1);
+    --icon-color-5-alpha01: rgba(85, 9, 56, 0.1);
+    --icon-color-1-alpha02: rgba(90, 22, 129, 0.2);
+    --icon-color-2-alpha02: rgba(2, 1, 39, 0.2);
+    --icon-color-3-alpha02: rgba(6, 16, 102, 0.2);
+    --icon-color-4-alpha02: rgba(54, 16, 85, 0.2);
+    --icon-color-5-alpha02: rgba(85, 9, 56, 0.2);
+    --icon-color-1-alpha03: rgba(90, 22, 129, 0.3);
+    --icon-color-2-alpha03: rgba(2, 1, 39, 0.3);
+    --icon-color-3-alpha03: rgba(6, 16, 102, 0.3);
+    --icon-color-4-alpha03: rgba(54, 16, 85, 0.3);
+    --icon-color-5-alpha03: rgba(85, 9, 56, 0.3);
 }
 
 html, body, p, h1 {
@@ -332,8 +374,12 @@ main {
     animation: 12s linear infinite reverse move;
 }
 
-.box i::before {
-    color: rgb(6, 226, 226);
+.box .fa-brands {
+    color: var(--icon-color-1);
+    text-shadow: 1px 1px var(--icon-color-1-alpha03),
+                2px 2px var(--icon-color-1-alpha03),
+                3px 3px var(--icon-color-1-alpha02),
+                4px 4px var(--icon-color-1-alpha01);
     filter: saturate(200%);
     animation: 5s ease-in-out infinite alternate color-wave;
     animation-delay: calc(0.3s * var(--i));
@@ -591,23 +637,43 @@ main {
 
 @keyframes color-wave{
     0% {
-        color: rgb(6, 226, 226);
+        color: var(--icon-color-1);
+        text-shadow: 1px 1px var(--icon-color-1-alpha03),
+                2px 2px var(--icon-color-1-alpha03),
+                3px 3px var(--icon-color-1-alpha02),
+                4px 4px var(--icon-color-1-alpha01);
     }
 
     25% {
-        color: rgb(6, 247, 46);
+        color: var(--icon-color-2);
+        text-shadow: 1px 1px var(--icon-color-2-alpha03),
+                2px 2px var(--icon-color-2-alpha03),
+                3px 3px var(--icon-color-2-alpha02),
+                4px 4px var(--icon-color-2-alpha01);
     }
 
     50% {
-        color: rgb(167, 41, 37);
+        color: var(--icon-color-3);
+        text-shadow: 1px 1px var(--icon-color-3-alpha03),
+                2px 2px var(--icon-color-3-alpha03),
+                3px 3px var(--icon-color-3-alpha02),
+                4px 4px var(--icon-color-3-alpha01);
     }
 
     75% {
-        color: rgb(231, 21, 168);
+        color: var(--icon-color-4);
+        text-shadow: 1px 1px var(--icon-color-4-alpha03),
+                2px 2px var(--icon-color-4-alpha03),
+                3px 3px var(--icon-color-4-alpha02),
+                4px 4px var(--icon-color-4-alpha01);
     }
 
     100% {
-        color: rgb(20, 52, 235);
+        color: var(--icon-color-5);
+        text-shadow: 1px 1px var(--icon-color-5-alpha03),
+                2px 2px var(--icon-color-5-alpha03),
+                3px 3px var(--icon-color-5-alpha02),
+                4px 4px var(--icon-color-5-alpha01);
     }
 }
 
