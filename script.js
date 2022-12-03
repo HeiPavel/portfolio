@@ -12,15 +12,14 @@ let checkLinkClick = false;
 
 // Nav bar underline effect
 const setUnderline = (event) => {
+    const underline = document.querySelector('header').querySelector('.desktop').querySelector('.underline');
     if (event.type === 'click') {
         checkLinkClick = true;
-        const underline = event.target.parentElement.querySelector('.underline');
         underline.style.left = `${event.target.offsetLeft}px`;
         underline.style.width = `${event.target.offsetWidth}px`;
         Promise.all(underline.getAnimations().map(animation => animation.finished)).then(() => checkLinkClick = false);
     }
     if ((event.type === 'scroll' || event.type === 'resize') && !checkLinkClick && window.innerWidth >= 960) {
-        const underlineOnScroll = document.querySelector('header').querySelector('.desktop').querySelector('.underline');
         for (const container of sectionHeaderBoxs) {
             const top = container.getBoundingClientRect().top;
             if (window.innerHeight - top >= Math.round(window.innerHeight * 0.5)) {
@@ -29,15 +28,15 @@ const setUnderline = (event) => {
                     check = true;
                 }
                     const linkOnScroll = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-${id}`);
-                    underlineOnScroll.style.left = `${linkOnScroll.offsetLeft}px`;
-                    underlineOnScroll.style.width = `${linkOnScroll.offsetWidth}px`; 
+                    underline.style.left = `${linkOnScroll.offsetLeft}px`;
+                    underline.style.width = `${linkOnScroll.offsetWidth}px`; 
             }
         }
         const bodyTop = document.body.getBoundingClientRect().top * -1;
         if (bodyTop <= (sectionHeaderBoxs[0].getBoundingClientRect().top) && check) {
             const linkOnScrollHome = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-home`);
-            underlineOnScroll.style.left = `${linkOnScrollHome.offsetLeft}px`;
-            underlineOnScroll.style.width = `${linkOnScrollHome.offsetWidth}px`;
+            underline.style.left = `${linkOnScrollHome.offsetLeft}px`;
+            underline.style.width = `${linkOnScrollHome.offsetWidth}px`;
             check= false;
         }
     }
