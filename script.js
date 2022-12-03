@@ -97,17 +97,19 @@ const round = (number, numberOfDigits) => {
     return Number(number.toFixed(numberOfDigits));
 };
 
+const mathRadius = (element) => {
+    let containerRadiusString = window.getComputedStyle(element).width;
+    containerRadiusString = containerRadiusString.substring(0, containerRadiusString.indexOf('px'));
+    return Number(containerRadiusString)/2;
+};
+
 const placeIconOnCircle = () => {
     let alpha = 0;
     Array.prototype.forEach.call(boxs, box => {
         const iconContainer = document.getElementById('icon-container');
-        let iconContainerRadiusString = window.getComputedStyle(iconContainer).width;
-        iconContainerRadiusString = iconContainerRadiusString.substring(0, iconContainerRadiusString.indexOf('px'));
-        const iconContainerRadius = Number(iconContainerRadiusString)/2;
+        const iconContainerRadius = mathRadius(iconContainer);
         const radius = iconContainerRadius/1.5;
-        let boxRadiusString = window.getComputedStyle(box).width;
-        boxRadiusString = boxRadiusString.substring(0, boxRadiusString.indexOf('px'));
-        const boxRadius = Number(boxRadiusString)/2;
+        const boxRadius = mathRadius(box);
         const radians = round((alpha * 0.0174533), 4);
         let x = round((iconContainerRadius - boxRadius), 4);
         let y = round((iconContainerRadius - boxRadius), 4);

@@ -451,7 +451,6 @@ main {
 .bar-one {
     background: conic-gradient(transparent, transparent, transparent, var(--nav-hover-color));
     filter: saturate(400%) blur(10px);
-    /*animation: 10s linear infinite rotate-one;*/
 }
 
 .animate-one {
@@ -462,7 +461,6 @@ main {
     background: conic-gradient(transparent, transparent, transparent, var(--underline-bc));
     filter: saturate(400%) blur(10px);
     transform: rotate(-180deg);
-    /*animation: 10s linear infinite rotate-two;*/
 }
 
 .animate-two {
