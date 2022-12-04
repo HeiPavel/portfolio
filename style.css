@@ -499,18 +499,10 @@ main {
     filter: saturate(400%) blur(10px);
 }
 
-.animate-one {
-    animation: 10s linear infinite rotate-one;
-}
-
 .bar-two {
     background: conic-gradient(transparent, transparent, transparent, var(--underline-bc));
     filter: saturate(400%) blur(10px);
     transform: rotate(-180deg);
-}
-
-.animate-two {
-    animation: 10s linear infinite rotate-two;
 }
 
 .project-box {
@@ -731,6 +723,16 @@ main {
     .project-description {
         width: 50%;
     }
+}
+
+@media only screen and (min-width: 960px) {
+.animate-one {
+    animation: 10s linear infinite rotate-one;
+}
+
+.animate-two {
+    animation: 10s linear infinite rotate-two;
+}
 }
 
 @media only screen and (max-width: 960px) {
