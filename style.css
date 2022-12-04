@@ -617,6 +617,52 @@ main {
 
 /*Hover selectors for project-button writen in to @media (pointer: fine) only for screens with mouse etc...*/
 
+/*Contact section*/
+.contact-container {
+    position: relative;
+    padding: 5% 20%;
+    overflow: hidden;
+}
+
+.contacts {
+    padding: 5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.contact-box {
+    width: 195px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--color);
+    filter: saturate(200%);
+    transition: color 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 0 10px var(--color);
+}
+
+.contact-box p {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+}
+
+.contact-icon {
+    font-size: 1.6rem;
+}
+
+.contact-container .text-animation {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+/*Hover selectors for contact-box writen in to @media (pointer: fine) only for screens with mouse etc...*/
+
 @keyframes move {
     from {
         transform: rotate(0);
@@ -798,6 +844,10 @@ main {
         width: 80%;
         height: 50%;
     }
+
+    .contacts {
+        flex-direction: column;
+    }
 }
 
 @media only screen and (max-width: 420px) {
@@ -826,12 +876,16 @@ main {
         font-size: 1.5rem;
     }
 
-    .text-container {
+    .text-container, .contact-container {
         padding: 5% 7%;
     }
 
     .content-container {
         padding: 20% 0;
+    }
+
+    .content-container-box h1 {
+        font-size: 1.7rem;
     }
 
     .text-container p {
@@ -863,6 +917,10 @@ main {
         font-size: 1.1rem;
         gap: 15px;
     }
+
+    .contacts {
+        padding: 2rem 0;
+    }
 }
 
 @media only screen and (max-width:360px) {
@@ -889,5 +947,10 @@ main {
     
     .project-button:hover a {
         color: var(--body-background);
+    }
+
+    .contact-box:hover {
+        color: var(--jumping-letter-color);
+        box-shadow: 0 0 10px var(--jumping-letter-color);
     }
 }

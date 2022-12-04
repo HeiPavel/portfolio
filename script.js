@@ -149,7 +149,7 @@ const sectionPlaceHeadersUnderline = () => {
 const startAnimation = (startElement, elementToChangeClass, animationClassName, multiplyer) => {
     const topPosition = startElement.getBoundingClientRect().top;
     const className = elementToChangeClass.className;
-    const baseClaseName = className.includes(animationClassName) ? className.slice(0, className.indexOf(' ')) : className;
+    const baseClaseName = className.includes(animationClassName) ? className.slice(0, className.indexOf(` ${animationClassName}`)) : className;
     if (window.innerHeight - topPosition >= Math.round(window.innerHeight * multiplyer)) {
         if (!className.includes(animationClassName)) {
             elementToChangeClass.className = `${baseClaseName} ${animationClassName}`;
@@ -167,6 +167,7 @@ const checkSectionPosition = () => {
         startAnimation(box, box.querySelector('.underline'), 'center-underline', 0.5);
     }
     startAnimation(document.querySelector('#about'), document.querySelector('#about').querySelector('.text'), 'text-animation', 0.5);
+    startAnimation(document.querySelector('#contact'), document.querySelector('#contact').querySelector('.text'), 'text-animation', 0.5);
     for (const project of projectContainer) {
         startAnimation(project, project.querySelector('.project-container'), 'project-animation', 0.5);
     }
