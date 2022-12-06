@@ -663,6 +663,20 @@ main {
 
 /*Hover selectors for contact-box writen in to @media (pointer: fine) only for screens with mouse etc...*/
 
+/*Footer*/
+footer {
+    height: 100px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+footer p {
+    margin-right: 50px;
+    font-size: 0.9rem;
+}
+
 @keyframes move {
     from {
         transform: rotate(0);
@@ -921,6 +935,16 @@ main {
     .contacts {
         padding: 2rem 0;
     }
+
+    footer {
+        justify-content: center;
+        height: 64px;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 0.8rem;
+    }
 }
 
 @media only screen and (max-width:360px) {
@@ -935,6 +959,10 @@ main {
 
     .text-container {
         padding: 5%;
+    }
+
+    footer p {
+        font-size: 0.7rem;
     }
 }
 

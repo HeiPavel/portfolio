@@ -7,6 +7,7 @@ const lightModeButton = document.getElementById('light-mode-button');
 const menuButton = document.getElementById('menu-button');
 const sectionHeaderBoxs = document.getElementsByClassName('content-container');
 const projectContainer = document.getElementsByClassName('project-content-box');
+const footer = document.querySelector('footer');
 let check = false;
 let checkLinkClick = false;
 
@@ -172,6 +173,10 @@ const checkSectionPosition = () => {
         startAnimation(project, project.querySelector('.project-container'), 'project-animation', 0.5);
     }
 };
+
+//Footer add current year
+const date = new Date();
+footer.querySelector('p').textContent += ` ${date.getFullYear()}`;
 
 lightModeButton.addEventListener('click', changeLightMode);
 
