@@ -151,7 +151,7 @@ header .desktop a:nth-child(4) {
 }
 
 header .desktop .underline {
-    transition: left 0.5s ease, width 0.5s ease;
+    transition: left 0.6s ease, width 0.6s ease;
 }
 
 /*Mobile nav menu*/
