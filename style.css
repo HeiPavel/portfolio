@@ -213,12 +213,12 @@ header .desktop .underline {
     backdrop-filter: blur(5px);
     border: 1px solid var(--mobile-menu-border-hide-c);
     transform-origin: top right;
-    transform: scaleX(0) scaleY(0);
+    transform: scale(0);
     transition: transform 0.5s ease, border-color 0.5s;
 }
 
 #mobile-menu-container .show-mobile-menu {
-    transform: scaleX(100%) scaleY(100%);
+    transform: scale(100%);
     border: 1px solid var(--mobile-menu-border-show-c);
 }
 
