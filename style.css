@@ -366,21 +366,30 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     transform-origin: center;
     border-radius: 50%;
-    font-size: 2rem;
+    font-size: 1.8rem;
     animation: 12s linear infinite reverse move;
 }
 
-.box .fa-brands {
+.box svg {
+    height: 90%;
+    width: 90%;
+}
+
+.box .fa-brands, .box svg {
     color: var(--icon-color-1);
-    text-shadow: 1px 1px var(--icon-color-1-alpha03),
+    /*text-shadow: 1px 1px var(--icon-color-1-alpha03),
                 2px 2px var(--icon-color-1-alpha03),
                 3px 3px var(--icon-color-1-alpha02),
                 4px 4px var(--icon-color-1-alpha01);
-    filter: saturate(200%);
+    filter: saturate(200%);*/
+    filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-1-alpha03)) 
+                            drop-shadow(2px 2px var(--icon-color-1-alpha03)) 
+                            drop-shadow(3px 3px var(--icon-color-1-alpha02))
+                            drop-shadow(4px 4px var(--icon-color-1-alpha01));
     animation: 5s ease-in-out infinite alternate color-wave;
     animation-delay: calc(0.3s * var(--i));
 }
@@ -578,13 +587,25 @@ main {
 }
 
 .project-skills {
-    height: 2rem;
+    height: 2.5rem;
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     width: 90%;
+}
+
+.redux-icon {
+    display: flex;
+    align-items: center;
+}
+
+.redux-icon svg {
+    box-sizing: border-box;
+    height: 2.1rem;
+    width: 2.1rem;
+    color: var(--color);
 }
 
 .project-links {
@@ -690,42 +711,42 @@ footer p {
 @keyframes color-wave{
     0% {
         color: var(--icon-color-1);
-        text-shadow: 1px 1px var(--icon-color-1-alpha03),
-                2px 2px var(--icon-color-1-alpha03),
-                3px 3px var(--icon-color-1-alpha02),
-                4px 4px var(--icon-color-1-alpha01);
+        filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-1-alpha03)) 
+                drop-shadow(2px 2px var(--icon-color-1-alpha03)) 
+                drop-shadow(3px 3px var(--icon-color-1-alpha02))
+                drop-shadow(4px 4px var(--icon-color-1-alpha01));
     }
 
     25% {
         color: var(--icon-color-2);
-        text-shadow: 1px 1px var(--icon-color-2-alpha03),
-                2px 2px var(--icon-color-2-alpha03),
-                3px 3px var(--icon-color-2-alpha02),
-                4px 4px var(--icon-color-2-alpha01);
+        filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-2-alpha03)) 
+                drop-shadow(2px 2px var(--icon-color-2-alpha03)) 
+                drop-shadow(3px 3px var(--icon-color-2-alpha02))
+                drop-shadow(4px 4px var(--icon-color-2-alpha01));
     }
 
     50% {
         color: var(--icon-color-3);
-        text-shadow: 1px 1px var(--icon-color-3-alpha03),
-                2px 2px var(--icon-color-3-alpha03),
-                3px 3px var(--icon-color-3-alpha02),
-                4px 4px var(--icon-color-3-alpha01);
+        filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-3-alpha03)) 
+                drop-shadow(2px 2px var(--icon-color-3-alpha03)) 
+                drop-shadow(3px 3px var(--icon-color-3-alpha02))
+                drop-shadow(4px 4px var(--icon-color-3-alpha01));
     }
 
     75% {
         color: var(--icon-color-4);
-        text-shadow: 1px 1px var(--icon-color-4-alpha03),
-                2px 2px var(--icon-color-4-alpha03),
-                3px 3px var(--icon-color-4-alpha02),
-                4px 4px var(--icon-color-4-alpha01);
+        filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-4-alpha03)) 
+                drop-shadow(2px 2px var(--icon-color-4-alpha03)) 
+                drop-shadow(3px 3px var(--icon-color-4-alpha02))
+                drop-shadow(4px 4px var(--icon-color-4-alpha01));
     }
 
     100% {
         color: var(--icon-color-5);
-        text-shadow: 1px 1px var(--icon-color-5-alpha03),
-                2px 2px var(--icon-color-5-alpha03),
-                3px 3px var(--icon-color-5-alpha02),
-                4px 4px var(--icon-color-5-alpha01);
+        filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-5-alpha03)) 
+                drop-shadow(2px 2px var(--icon-color-5-alpha03)) 
+                drop-shadow(3px 3px var(--icon-color-5-alpha02))
+                drop-shadow(4px 4px var(--icon-color-5-alpha01));
     }
 }
 
@@ -885,9 +906,9 @@ footer p {
     }
 
     .box {
-        width: 55px;
-        height: 55px;
-        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.35rem;
     }
 
     .text-container, .contact-container {

@@ -120,7 +120,7 @@ const placeIconOnCircle = () => {
         const top = Math.round(y + dy);
         box.style.left = `${left}px`;
         box.style.top = `${top}px`;
-        alpha += 60;
+        alpha += 51.4;
     });
 };
 
