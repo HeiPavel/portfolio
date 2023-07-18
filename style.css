@@ -81,7 +81,7 @@
     --icon-color-5-alpha03: rgba(85, 9, 56, 0.3);
 }
 
-html, body, p, h1 {
+html, body, p, h2, h3 {
     margin: 0;
 }
 
@@ -127,9 +127,10 @@ header .desktop a {
     font-size: 1.5rem;
     transition: color 0.5s ease, filter 0.5s ease;
     filter: drop-shadow(2px 2px 10px transparent);
+    outline: none;
 }
 
-header .desktop a:hover {
+header .desktop a:hover, header .desktop a:focus {
     color: var(--nav-hover-color);
     filter: drop-shadow(2px 2px 10px var(--nav-hover-color));
 }
@@ -381,11 +382,6 @@ main {
 
 .box .fa-brands, .box svg {
     color: var(--icon-color-1);
-    /*text-shadow: 1px 1px var(--icon-color-1-alpha03),
-                2px 2px var(--icon-color-1-alpha03),
-                3px 3px var(--icon-color-1-alpha02),
-                4px 4px var(--icon-color-1-alpha01);
-    filter: saturate(200%);*/
     filter: saturate(200%) drop-shadow(1px 1px var(--icon-color-1-alpha03)) 
                             drop-shadow(2px 2px var(--icon-color-1-alpha03)) 
                             drop-shadow(3px 3px var(--icon-color-1-alpha02))
@@ -408,7 +404,7 @@ main {
     overflow: hidden;
 }
 
-.content-container-box h1{
+.content-container-box h2{
     font-size: 2rem;
     letter-spacing: 2px;
     margin: 0 auto;
@@ -531,7 +527,7 @@ main {
     justify-content: center;
 }
 
-.project-header h1 {
+.project-header h3 {
     font-size: 2.5rem;
     color: var(--jumping-letter-stroke-color);
     font-weight: 700;
@@ -577,7 +573,7 @@ main {
 
 .project-text {
     padding: 0 5%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.2;
 }
 
@@ -618,22 +614,22 @@ main {
 }
 
 .project-button {
+    display: block;
     position: relative;
+    text-align: center;
     background: transparent;
-    width: 5.5rem;
-    height: 2rem;
+    width: 5.2rem;
+    padding: 0.22rem 0;
     border-radius: 8px;
-    border: 3px solid var(--color);
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 0 0 var(--color);
-    transition: box-shadow 0.5s ease, background-color 0.5s ease ;
-}
-
-.project-button a {
     text-decoration: none;
     color: var(--color);
     transition: color 0.5s ease-in-out;
+    border: 3px solid var(--color);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 0 0 0 var(--color);
+    transition: box-shadow 0.5s ease, background-color 0.5s ease ;
 }
 
 /*Hover selectors for project-button writen in to @media (pointer: fine) only for screens with mouse etc...*/
@@ -666,6 +662,7 @@ main {
     filter: saturate(200%);
     transition: color 0.5s ease, box-shadow 0.5s ease;
     box-shadow: 0 0 10px var(--color);
+    outline: none;
 }
 
 .contact-box p {
@@ -991,14 +988,11 @@ footer p {
     .project-button:hover {
         box-shadow: 0 0 15px var(--color),
         inset 5.5rem 0 var(--color);
+        color: var(--body-background);
         background-color: var(--color);
     }
     
-    .project-button:hover a {
-        color: var(--body-background);
-    }
-
-    .contact-box:hover {
+    .contact-box:hover, .contact-box:focus {
         color: var(--jumping-letter-color);
         box-shadow: 0 0 10px var(--jumping-letter-color);
     }
