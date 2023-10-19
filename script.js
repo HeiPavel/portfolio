@@ -10,6 +10,7 @@ const projectContainer = document.getElementsByClassName('project-content-box');
 const footer = document.querySelector('footer');
 let check = false;
 let checkLinkClick = false;
+let stopType = false, letterDeleyId = false, resetTypeDeleyId = false, resizeTimeoutId = false;
 
 // Nav bar underline effect
 const setOffset = (underlineElement, elementToGetOffset) => {
@@ -72,24 +73,36 @@ const rotateLine = () => {
 
 //Type name effect
 const typeName = async () => {
+    paragNameTyping.textContent = '';
     const string = 'Pavel Trofymovych';
-    for (let i = 0; i < string.length; i++) {
-        let addLetter;
-        const prom = new Promise(resolve => {
-            setTimeout(() => {
-                resolve(string[i]);
-            }, 200);
+    if (window.innerWidth >= 960) {
+        if (stopType) {
+            stopType = false;
+            return;
+        }
+        for (let i = 0; i < string.length; i++) {
+            if (stopType) {
+                stopType = false;
+                return;
+            }
+            let addLetter;
+            const prom = new Promise(resolve => {
+                letterDeleyId = setTimeout(() => {
+                    resolve(string[i]);
+                }, 200);
+            });
+            addLetter = await prom;
+            paragNameTyping.textContent += `${addLetter}`;
+        }
+        await new Promise(resolve => {
+            resetTypeDeleyId = setTimeout(() => {
+                resolve();
+            }, 3000);
         });
-        addLetter = await prom;
-        paragNameTyping.textContent += `${addLetter}`;
+        typeName();
+    } else {
+        paragNameTyping.textContent = string;
     }
-    await new Promise(resolve => {
-        setTimeout(() => {
-            resolve();
-            paragNameTyping.textContent = '';
-        }, 3000);
-    });
-    typeName();
 };
 
 //Skill circle effect
@@ -194,6 +207,17 @@ for (const link of mobileMenuLinks) {
 }
 
 window.addEventListener('load', typeName);
+window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeoutId);
+
+        resizeTimeoutId = setTimeout(() => {
+            clearTimeout(letterDeleyId);
+            clearTimeout(resetTypeDeleyId);
+            stopType = true;
+            stopType = false;
+            typeName();
+        }, 250);
+});
 
 'resize load'.split(' ').forEach(element => {
     window.addEventListener(element, placeIconOnCircle);

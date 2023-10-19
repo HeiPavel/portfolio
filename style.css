@@ -317,8 +317,6 @@ main {
     min-height: 2.5rem;
     width: fit-content;
     white-space: nowrap;
-    border-right: 0.45rem solid var(--underline-bc);
-    animation: 0.5s step-end infinite alternate blink;
 }
 
 /*Skill jumping container*/
@@ -799,6 +797,11 @@ footer p {
 }
 
 @media only screen and (min-width: 960px) {
+    #type-name {
+        border-right: 0.45rem solid var(--underline-bc);
+        animation: 0.5s step-end infinite alternate blink;
+    }
+
     .letter-box {
         animation: 2s ease-in-out infinite alternate jump;
         animation-delay: calc(0.4s * var(--d));
@@ -850,7 +853,6 @@ footer p {
 
     #type-name {
         min-height: 2rem;
-        border-width: 0.3rem;
     }
 
     .letter-box {
@@ -903,7 +905,7 @@ footer p {
     }
 
     #type-name {
-        min-height: 1.5rem;
+        min-height: 1.4rem;
     }
 
     #icon-container {
