@@ -10,7 +10,7 @@ const projectContainer = document.getElementsByClassName('project-content-box');
 const footer = document.querySelector('footer');
 let check = false;
 let checkLinkClick = false;
-let stopType = false, letterDeleyId = false, resetTypeDeleyId = false, resizeTimeoutId = false;
+let stopType = [false], resizeTimeoutId = false;
 
 // Nav bar underline effect
 const setOffset = (underlineElement, elementToGetOffset) => {
@@ -72,34 +72,28 @@ const rotateLine = () => {
 };
 
 //Type name effect
-const typeName = async () => {
+const typeName = async (stop) => {
     paragNameTyping.textContent = '';
     const string = 'Pavel Trofymovych';
     if (window.innerWidth >= 960) {
-        if (stopType) {
-            stopType = false;
-            return;
-        }
         for (let i = 0; i < string.length; i++) {
-            if (stopType) {
-                stopType = false;
-                return;
-            }
             let addLetter;
             const prom = new Promise(resolve => {
-                letterDeleyId = setTimeout(() => {
+                setTimeout(() => {
                     resolve(string[i]);
                 }, 200);
             });
             addLetter = await prom;
+            if (stop[0]) return;
             paragNameTyping.textContent += `${addLetter}`;
         }
         await new Promise(resolve => {
-            resetTypeDeleyId = setTimeout(() => {
+            setTimeout(() => {
                 resolve();
             }, 3000);
         });
-        typeName();
+        if (stop[0]) return;
+        typeName(stop);
     } else {
         paragNameTyping.textContent = string;
     }
@@ -206,16 +200,14 @@ for (const link of mobileMenuLinks) {
     link.addEventListener('click', rotateLine);
 }
 
-window.addEventListener('load', typeName);
+window.addEventListener('load', typeName(stopType));
 window.addEventListener('resize', () => {
         clearTimeout(resizeTimeoutId);
 
         resizeTimeoutId = setTimeout(() => {
-            clearTimeout(letterDeleyId);
-            clearTimeout(resetTypeDeleyId);
-            stopType = true;
-            stopType = false;
-            typeName();
+            stopType[0] = true;
+            stopType = [false];
+            typeName(stopType);
         }, 250);
 });
 
