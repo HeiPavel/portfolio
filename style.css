@@ -347,9 +347,6 @@ main {
     -webkit-text-stroke: 2px var(--jumping-letter-stroke-color);
     filter: drop-shadow(2px -2px 2px var(--jumping-letter-stroke-color));
     letter-spacing: 0.2rem;
-    animation: 2s ease-in-out infinite alternate jump;
-    animation-delay: calc(0.4s * var(--d));
-    transform: translateY(1rem);
 }
 
 /*Icon circle container*/
@@ -359,7 +356,6 @@ main {
     height: 300px;
     border-radius: 50%;
     transform-origin: center;
-    animation: 12s linear infinite move;
 }
 
 .box {
@@ -372,7 +368,6 @@ main {
     transform-origin: center;
     border-radius: 50%;
     font-size: 1.8rem;
-    animation: 12s linear infinite reverse move;
 }
 
 .box svg {
@@ -804,13 +799,27 @@ footer p {
 }
 
 @media only screen and (min-width: 960px) {
-.animate-one {
-    animation: 10s linear infinite rotate-one;
-}
+    .letter-box {
+        animation: 2s ease-in-out infinite alternate jump;
+        animation-delay: calc(0.4s * var(--d));
+        transform: translateY(1rem);
+    }
+    
+    #icon-container {
+        animation: 12s linear infinite move;
+    }
+    
+    .box {
+        animation: 12s linear infinite reverse move;
+    }
 
-.animate-two {
-    animation: 10s linear infinite rotate-two;
-}
+    .animate-one {
+        animation: 10s linear infinite rotate-one;
+    }
+
+    .animate-two {
+        animation: 10s linear infinite rotate-two;
+    }
 }
 
 @media only screen and (max-width: 960px) {
@@ -882,7 +891,7 @@ footer p {
     }
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 480px) {
 
     #name-writer p {
         font-size: 1rem;
