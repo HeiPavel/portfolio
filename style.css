@@ -379,8 +379,6 @@ main {
                             drop-shadow(2px 2px var(--icon-color-1-alpha03)) 
                             drop-shadow(3px 3px var(--icon-color-1-alpha02))
                             drop-shadow(4px 4px var(--icon-color-1-alpha01));
-    animation: 5s ease-in-out infinite alternate color-wave;
-    animation-delay: calc(0.3s * var(--i));
 }
 
 /*Section about*/
@@ -822,6 +820,11 @@ footer p {
 
     .animate-two {
         animation: 10s linear infinite rotate-two;
+    }
+
+    .box .fa-brands, .box svg {
+        animation: 5s ease-in-out infinite alternate color-wave;
+        animation-delay: calc(0.3s * var(--i));
     }
 }
 
