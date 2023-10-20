@@ -1,4 +1,5 @@
 const links = document.querySelectorAll('.desktop a');
+const underline = document.querySelector('header .desktop .underline');
 const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
 const paragNameTyping = document.getElementById('type-name');
 const boxs = document.getElementsByClassName('box');
@@ -19,11 +20,11 @@ const setOffset = (underlineElement, elementToGetOffset) => {
 };
 
 const setUnderline = (event) => {
-    const underline = document.querySelector('header').querySelector('.desktop').querySelector('.underline');
     if (event.type === 'click') {
         checkLinkClick = true;
         setOffset(underline, event.target);
         Promise.all(underline.getAnimations().map(animation => animation.finished)).then(() => checkLinkClick = false);
+        if ([...links].includes(document.activeElement)) document.activeElement.blur();
     }
     if ((event.type === 'scroll' || event.type === 'resize') && !checkLinkClick && window.innerWidth >= 960) {
         for (const container of sectionHeaderBoxs) {
@@ -33,13 +34,13 @@ const setUnderline = (event) => {
                 if (id === 'about' || 'projects' || 'contact') {
                     check = true;
                 }
-                    const linkOnScroll = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-${id}`);
+                    const linkOnScroll = document.querySelector(`#desktop-${id}`);
                     setOffset(underline, linkOnScroll);
             }
         }
         const bodyTop = document.body.getBoundingClientRect().top * -1;
         if (bodyTop <= (sectionHeaderBoxs[0].getBoundingClientRect().top) && check) {
-            const linkOnScrollHome = document.querySelector('header').querySelector('.desktop').querySelector(`#desktop-home`);
+            const linkOnScrollHome = document.querySelector(`#desktop-home`);
             setOffset(underline, linkOnScrollHome);
             check= false;
         }
