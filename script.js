@@ -9,6 +9,8 @@ const menuButton = document.getElementById('menu-button');
 const sectionHeaderBoxs = document.getElementsByClassName('content-container');
 const projectContainer = document.getElementsByClassName('project-content-box');
 const footer = document.querySelector('footer');
+const contactButtons = document.getElementsByClassName('contact-box');
+
 let check = false;
 let checkLinkClick = false;
 let stopType = [false], resizeTimeoutId = false;
@@ -182,6 +184,8 @@ const checkSectionPosition = () => {
     }
 };
 
+const unsetFocusAtContactButton = event => event.target.closest('.contact-box').blur();
+
 //Footer add current year
 const date = new Date();
 footer.querySelector('p').textContent += ` ${date.getFullYear()}`;
@@ -218,3 +222,7 @@ window.addEventListener('resize', () => {
 });  
 
 window.addEventListener('scroll', checkSectionPosition);
+
+for (const button of contactButtons) {
+    button.addEventListener('click', unsetFocusAtContactButton);
+}
