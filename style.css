@@ -598,6 +598,10 @@ main {
     color: var(--color);
 }
 
+.svg-icon .sanity {
+    width: 3rem;
+}
+
 .project-links {
     width: 100%;
     display: flex;
